@@ -1,0 +1,594 @@
+\documentclass{beamer}
+\usefonttheme{serif}
+
+\usepackage{amsmath,amsthm,amssymb,amsfonts,amscd,mathrsfs,amsxtra,multirow,kotex,mathtools,gensymb,textcomp,lipsum,tikz,verbatim,color,soul,courier,mdframed,xcolor}
+\usepackage[normalem]{ulem}
+\usetikzlibrary{calc,matrix,arrows,chains,positioning,scopes}
+\usepackage{pdfpages}
+
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{prop}[thm]{Proposition}
+
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{exmp}[thm]{Example}
+\newtheorem{excs}[thm]{Exercise}
+\newtheorem{rem}[thm]{Remark}
+\newtheorem{prob}[thm]{Problem}
+
+\newcommand \tr[1]{\textcolor{red}{#1}}
+\newcommand{\tikzmark}[1]{\tikz[overlay,remember picture] \node (#1) {};}
+\newcommand{\varep}{\varepsilon}
+\newcommand{\DrawBox}[1][]{%
+    \tikz[overlay,remember picture]{
+    \draw[red,#1]
+      ($(left)+(-0.2em,0.9em)$) rectangle
+      ($(right)+(0.2em,-0.3em)$);}
+}
+
+\newcommand{\tikzmarkk}[2]{
+    \tikz[overlay,remember picture,baseline] 
+    \node[anchor=base] (#1) {$#2$};
+}
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+
+\tikzset{join/.code=\tikzset{after node path={%
+\ifx\tikzchainprevious\pgfutil@empty\else(\tikzchainprevious)%
+edge[every join]#1(\tikzchaincurrent)\fi}}}
+
+\tikzset{>=stealth',every on chain/.append style={join},
+         every join/.style={->}}
+\tikzstyle{labeled}=[execute at begin node=$\scriptstyle,
+   execute at end node=$]
+   
+%\renewcommand*\env@matrix[1][\arraystretch]{%
+%  \edef\arraystretch{#1}%
+%  \hskip -\arraycolsep
+%  \let\@ifnextchar\new@ifnextchar
+%  \array{*\c@MaxMatrixCols c}}
+%\makeatother
+
+\title[]{SE102:Multivariable Calculus}
+
+\author[]{Hyosang Kang\inst{1}}
+
+\institute[]{\inst{1}Division of Mathematics\\ School of Interdisciplinary Studies\\ DGIST}
+
+\date[]{\tr{Live} on Wed 9:00-11:00/Fri 10:00-12:00 \\Fall 2020}
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}
+\begin{defn}\label{defn-vec}
+A ($n$-dimensional) \textbf{vector} is a $n$-tuple of real numbers 
+	$$\mathbf a=(a_1,a_2,\cdots,a_n)$$
+with the following operations.
+	\begin{itemize}
+	\item (vector sum) For a vector $\mathbf b = (b_1,b_2,\cdots,b_n)$,
+		$$\mathbf a+\mathbf b=(a_1+b_1,a_2+b_2,\cdots,a_n+b_n).$$
+	\item (scalar multiplication) For $k\in\mathbf R$, we define a vector $k\mathbf a$ as
+		$$k\mathbf a=(ka_1,ka_2,\cdots,ka_n).$$
+	\end{itemize}
+
+The set of all ($n$-dimensional) vectors is called the ($n$-dimensional) \textbf{vector space},
+and denoted by $\mathbf R^n$.
+\end{defn}
+\end{frame}
+
+\begin{frame}
+\begin{exmp}
+Let $O=(0,0,0)$ be the origin and $P=(a_1,a_2,a_3)$ a point in $3$-dimensional space.
+Then the arrow $\overrightarrow{OP}$ can be represented by the \textbf{position vector}
+	$$\overrightarrow{OP}=(a_1,a_2,a_3)$$
+The scalar multiplication is a dilation, and the vector sum is a superposition.
+For points $Q=(b_1,b_2,b_3)$ and $R=(a_1+b_1,a_2+b_2,a_3+b_3)$,
+the vector $\overrightarrow{PR}$ is represented by the same vector as $\overrightarrow{OQ}$.
+Thus we have the following additive operation.
+	$$\overrightarrow{OP}+\overrightarrow{OQ}=\overrightarrow{OP}+\overrightarrow{PR}=\overrightarrow{OR}$$
+\end{exmp}
+\end{frame}
+
+\begin{frame}
+\begin{exmp}
+Let $c:(-\varep,\varep)\rightarrow\mathbf R^2$ be a parametrization of a curve on a plane.
+Suppose that each coordinate functions are given by differentiable function $x(t),y(t)$ defined on $(-\varep,\varep)$.
+	$$c(t)=(x(t),y(t))$$
+Let us define $c'(t)$ as
+	$$c'(t)=(x'(t),y'(t))$$
+We can consider $c'(t)$ as a vector, which represents the \textbf{velocity} at $c(t)$. 
+The $x,y$-components of the vector $c'(t)$ represent the projective speed of $c(t)$ on $x,y$-axis respectively.
+We can decompose the velocity vector into the sum of horizontal and vertical velocity of $c(t)$.
+	$$c'(t) = (x'(t),0)+(0,y'(t))$$
+\end{exmp}
+\end{frame}
+
+\begin{frame}
+\begin{exmp}
+Let us consider a function $f$ sending every point in $\mathbf R^2$ to a point in $\mathbf R^3$ as follows.
+	\begin{equation}\label{eqn-mult-exmp-surf}
+	f(u,v)=(x(u,v),y(u,v),z(u,v))
+	\end{equation}
+The variables $x,y,z$ are dependent to the variables $u,v$.
+The functions $f$ (and also $x,y,z$ as functions) contain(s) two or more independent or dependent variables.
+Such functions are are called \textbf{multivariable functions}. 
+If we write $\mathbf a=(u,v)$ and $\mathbf b=(x,y,z)$, the equation \eqref{eqn-mult-exmp-surf} can be written as
+$f(\mathbf a)=\mathbf b$.
+A multivariable function can be viewed as a \emph{single variable} function which assigns a vector to another vector.
+\end{exmp}
+\end{frame}
+
+\begin{frame}
+\begin{defn}
+For a ($n$-dimensional) vector $\mathbf a=(a_1,a_2,\cdots,a_n)$, the value
+	$$\Vert \mathbf a\Vert =\sqrt{a_1^2+a_2^2+\cdots+a_n^2}$$
+is called the \textbf{norm} of $\mathbf a$.
+A vector with norm $1$ is called a \textbf{unit} vector.
+The norm $\Vert \mathbf a\Vert $ is $0$ if and only if $\mathbf a$ is a \textbf{zero vector}, that is,
+	$$\mathbf 0+\mathbf a = \mathbf a + \mathbf 0 = \mathbf a$$
+for any vector $\mathbf a$. For nonzero vector $\mathbf a$, 
+	$$\mathbf u=\mathbf a/\Vert \mathbf a\Vert $$
+is called the \textbf{normalization} of $\mathbf a$.
+\end{defn}
+\end{frame}
+
+\begin{frame}
+\begin{exmp}
+For each $i=1,\cdots, n$, the vector
+	$$\mathbf e_i=(0,\cdots,1,\cdots,0)$$
+with $1$ at $i$th place is called a (unit) \textbf{basis vector}.
+Especially, $3$-dimensional basis vectors are denoted by
+	$$\mathbf i=(1,0,0),\quad\mathbf j=(0,1,0),\quad\mathbf k=(0,0,1)$$
+A vector $\mathbf a=(a_1,a_2,\cdots,a_n)$ can be decomposed as a linear sum of basis vectors.
+	$$\mathbf a = a_1\mathbf e_1+a_2\mathbf e_2+\cdots+a_n\mathbf e_n$$
+Thus the set
+	$$\{\mathbf e_1,\mathbf e_2,\cdots,\mathbf e_n\}$$
+is called the \textbf{basis}, and generates all $n$-dimensional vectors.
+\end{exmp}
+\end{frame}
+
+\begin{frame}
+\begin{defn}
+The \textbf{inner product} (also called \textbf{dot product}) of two vectors $\mathbf a$, $\mathbf b$ is an operation defined by
+	$$\mathbf a\cdot\mathbf b=a_1b_1+a_2b_2+\cdots+a_nb_n$$
+If $\mathbf a\cdot\mathbf b=0$, then we say $\mathbf a$, $\mathbf b$ are \textbf{orthogonal}.
+\end{defn}
+\begin{prop}
+The inner product satisfies the following.
+\begin{enumerate}
+\item $\mathbf a\cdot(\mathbf b+\mathbf c)=\mathbf a\cdot\mathbf b+\mathbf a\cdot\mathbf c$
+\item $\mathbf a\cdot(k\mathbf b)=k(\mathbf a\cdot\mathbf b)$
+\item $\mathbf a\cdot\mathbf a=\Vert \mathbf a\Vert ^2$
+\end{enumerate}
+\end{prop}
+\end{frame}
+
+\begin{frame}
+\begin{exmp}
+Let us parametrize a line $l$ in $\mathbf R^3$.
+\begin{enumerate}
+	\item Suppose that $l$ passes through $P=(x_0,y_0,z_0)$ and parallel to $\mathbf a=(a_1,a_2,a_3)$. Then the paramtric equations of $l$ is
+		\begin{equation}\label{eqn-param-lin}
+		l(t) = P + t\mathbf a
+		\end{equation}
+	Equivalently, equation \eqref{eqn-param-lin} can be written as a \emph{symmetric form} as follows.
+		\begin{equation}\label{eqn-param-lin2}
+		\frac{x-x_0}{a_1} = \frac{y-y_0}{a_2} = \frac{z-z_0}{a_3}
+		\end{equation}
+    \item Suppoe that $l$ passes through two points $P,Q$. By subsitute $\mathbf a=\overrightarrow{OP}-\overrightarrow{OQ}$ to \eqref{eqn-param-lin} or \eqref{eqn-param-lin2}, we get a parametric equation of $l$.
+\end{enumerate}
+\end{exmp}
+\end{frame}
+
+\begin{frame}
+\begin{thm}\label{thm-dot-cos}
+Let $\mathbf a$, $\mathbf b$ be nonzero $2$-dimensional vectors.
+If $\theta$ is the angle between $\mathbf a$ and $\mathbf b$, then 
+	$$\mathbf a\cdot\mathbf b=\Vert \mathbf a\Vert \cdot\Vert \mathbf b\Vert \cdot\cos\theta$$
+\end{thm}
+\begin{defn}
+For nonzero vectors $\mathbf a$ and $\mathbf b$ with the same dimension, 
+the vector defined by
+	$$\textup{proj}_{\mathbf b}\mathbf a=\left(\frac{\mathbf a\cdot\mathbf b}{\Vert \mathbf b\Vert ^2}\right)\mathbf b$$
+is called the \textbf{projection of $\mathbf a$ onto $\mathbf b$}.
+\end{defn}
+\end{frame}
+
+\begin{frame}
+\begin{rem}
+As norm measures the \emph{size} of a vector, the inner product measure the \emph{direction}.
+For example, the direction of a $2$-dimensional vector $\mathbf a$ is determined by $0\le \theta_1,\theta_2\le\pi$ satisfying
+	$$\mathbf a\cdot\mathbf e_1=\Vert \mathbf a\Vert \cos\theta_1$$
+	$$\mathbf a\cdot\mathbf e_2=\Vert \mathbf a\Vert \cos\theta_2$$
+In order to determine the direction of a $3$-dimensional vector, say $\mathbf a$, 
+we need three angles $0\le\alpha,\beta,\gamma\le\pi$ satisfying
+	\begin{equation}\label{eqn-direc-cosi}
+	\cos\alpha=\frac{\mathbf a\cdot\mathbf i}{\Vert \mathbf a\Vert },\quad \cos\beta=\frac{\mathbf a\cdot\mathbf j}{\Vert \mathbf a\Vert },
+	\quad\cos\gamma=\frac{\mathbf a\cdot\mathbf k}{\Vert \mathbf a\Vert }
+	\end{equation}
+Such quantities are called the \textbf{direction cosines}. 
+\end{rem}
+\end{frame}
+
+\begin{frame}
+\begin{defn}
+A $n\times m$ ($n$-by-$m$) \textbf{matrix} is a collection of $nm$ numbers (or functions) arranged in the following way.
+	$$A= (a_{ij})_{n\times m}=\begin{pmatrix}
+	a_{11} & a_{12} & \cdots & a_{1m} \\
+	a_{21} & a_{22} & \cdots & a_{2m} \\
+	\vdots & \vdots & & \vdots \\
+	a_{n1} & a_{n2}& \cdots & a_{nm} \end{pmatrix}$$
+The indices $i$, $j$ of an entry $a_{ij}$ represents the row and column indices respectively.
+\end{defn}
+\end{frame}
+
+\begin{frame}
+\begin{exmp}\*
+\begin{enumerate}
+	\item A $n\times m$ matrix is called \textbf{square} matrix if $n=m$.
+	\item If $A$ is a square matrix and $a_{ij}=0$ for all $i\neq j$, then $A$ is called \textbf{diagonal}.
+	$$A = \begin{pmatrix}
+	a_{11} &  & \mathbf 0 \\
+	& \ddots & \\
+	\mathbf 0 & & a_{nn}
+	\end{pmatrix}$$
+	\item If the diagonal entries of a diagonal matrix are all $1$, then it is called the \textbf{identity matrix}, and denoted by $I_n$.
+	$$I_n = \begin{pmatrix}
+	1 &  & \mathbf 0 \\
+	& \ddots & \\
+	\mathbf 0 & & 1
+	\end{pmatrix}$$
+	\item If $A$ is a square matrix and $a_{ij}=0$ for all $i<j$ ($i<j$, respectively), 
+	then $A$ is called \textbf{lower triangle} (\textbf{upper triangle}, respectively).
+	$$\begin{pmatrix}
+	\ast &  & \mathbf 0 \\
+	& \ddots & \\
+	\ast & & \ast
+	\end{pmatrix},\quad\begin{pmatrix}
+	\ast &  & \ast\\
+	& \ddots & \\
+	\mathbf 0 & & \ast
+	\end{pmatrix}$$
+	\item If every entry is $0$, then it is called the \textbf{zero matrix}, and denoted by $\mathbf 0$.
+\end{enumerate}
+\end{exmp}
+\end{frame}
+
+\begin{frame}
+\begin{defn}
+Let $A=(a_{ij})$ and $B=(b_{ij})$ be $n\times m$ matrix. Then we define
+	$$A+B=(a_{ij}+b_{ij})$$
+	$$k\cdot A=(ka_{ij})$$
+Let $C$ be a $m\times l$ matrices, then $A\cdot C$ is a $n\times l$ matrix whose entries are
+	$$A\cdot B=(a_{i1}b_{1j}+a_{i2}b_{2j}+\cdots+a_{im}b_{mj})_{1\le i\le n,1\le j\le l}$$
+	$$=\begingroup\renewcommand*{\arraystretch}{.5}\begin{pmatrix}
+	a_{11}  & a_{12} & \cdots & a_{1m} \\
+	\vdots  & \vdots & & \vdots \\
+	\tikzmark{left}a_{i1}  & a_{i2} & \cdots & a_{im}\tikzmark{right} \\
+	\vdots & \vdots & & \vdots \\
+	a_{n1}  & a_{n2} & \cdots & a_{nm} 
+	\end{pmatrix}\endgroup\DrawBox[thick]
+	\begingroup\renewcommand*{\arraystretch}{1.5}\begin{pmatrix}
+	c_{11} \cdots \tikzmark{left}c_{1j} \cdots  c_{1l} \\
+	c_{21}  \cdots c_{2j} \cdots  c_{2l} \\
+	\vdots\,\quad\quad\vdots \quad\,\quad\vdots  \\
+	c_{m1} \cdots  c_{mj}\tikzmark{right} \cdots  c_{ml}
+	\end{pmatrix}\endgroup\DrawBox[thick]$$
+\end{defn}
+\end{frame}
+
+\begin{frame}
+\begin{exmp}
+Suppose Bob, Larry, and Joanna worked in a fruits store for three days.
+Table 1 shows \emph{how many} fruits each sold in total represented by the matrix $A$,
+and Table 2 shows \emph{how much} was the fruits on each day represented by the matrix $B$.
+\begin{table}[h!]
+\centering
+\begin{tabular}{lllll}
+       & Apple & Orange & Banana &  \\
+Bob    & 38    & 25     & 10     &  \\
+Larry  & 15    & 22     & 15     &  \\
+Joanna & 8     & 70     & 27     & 
+\end{tabular}\caption{The volumn of sales of each person per items}
+\end{table}
+\begin{table}[h]
+\centering
+\begin{tabular}{lllll}
+       & Day1   & Day2   & Day3   &  \\
+Apple  & \$1.19 & \$1.45 & \$.99  &  \\
+Orange & \$1.70 & \$0.99 & \$2.1  &  \\
+Banana & \$2.19 & \$3.5  & \$1.29 & 
+\end{tabular}\caption{The prices of items per day}
+\end{table}
+\end{exmp}
+\end{frame}
+
+\begin{frame}
+\begin{exmp}
+The $i,j$-entries of the $A\cdot B$ represents the total
+revenue sold by the person $i$ at the day $j$. 
+
+$$\begin{pmatrix}
+	38 & 25 & 10  \\
+	15 & 22 & 15  \\
+	8 & 70 & 27  
+	\end{pmatrix}\begin{pmatrix}
+	1.19 & 1.45 & 0.99 \\
+	1.70 & 0.99 & 2.1 \\
+	2.19 & 3.5 & 1.29
+    \end{pmatrix}$$
+A deeper, and more mathematical, thus important meaning of matrix multiplication
+will be discovered when we visit in the \emph{chain rule} in later sections.
+\end{exmp}
+\end{frame}
+
+\begin{frame}
+\begin{prop}
+Let $A,B,C$ be matrices. Whenever the operations are valid, the following holds.
+	\begin{enumerate}
+		\item $(A\cdot B)\cdot C=A\cdot(B\cdot C)$
+		\item $A\cdot (B+C)=A\cdot B+A\cdot C$
+		\item $(B+C)\cdot A=B\cdot A+C\cdot A$
+		\item $k\cdot (A\cdot B)=(k\cdot A)\cdot B=A\cdot(k\cdot B)$
+    \end{enumerate}
+\end{prop}
+\end{frame}
+
+\begin{frame}
+    \begin{prop}
+The \textbf{transpose} of a matrix $A=(a_{ij})$ defined by
+	$$A^T=(a_{ji})$$
+and it satisfies the following.
+	\begin{enumerate}\setcounter{enumi}{4}
+		\item $\left(A^T\right)^T=A$
+		\item $k\cdot A^T=(k\cdot A)^T$
+		\item $(A+B)^T=A^T+B^T$
+		\item $(AB)^T=B^TA^T$
+	\end{enumerate}
+\end{prop}
+\end{frame}
+
+\begin{frame}
+\begin{defn}
+The \textbf{determinant} of $2\times2$ matrix $A$ is defined as follows.
+	$$\det A=\left|\begin{array}{cc}a_{11}&a_{12}\\a_{21}&a_{22}\end{array}\right|=a_{11}a_{22}-a_{12}a_{21}$$
+The \textbf{determinant} of $3\times 3$ matrix $B$ is defined as follows.
+	\begin{align*}
+	\det B =\left|\begin{array}{ccc}b_{11}&b_{12}&b_{13}\\b_{21}&b_{22}&b_{23}\\b_{31}&b_{32}&b_{33}
+	\end{array}\right|
+	&=b_{11}b_{22}b_{33}+b_{12}b_{23}b_{31}+b_{13}b_{21}b_{32}\\
+	&\quad -b_{13}b_{22}b_{31}-b_{11}b_{23}b_{32}-b_{12}b_{21}b_{33}
+	\end{align*}
+\end{defn}
+\end{frame}
+
+\begin{frame}
+    \begin{defn}\label{defn-cross-prod}
+Let $\mathbf a=(a_1,a_2,a_3)$, $\mathbf b=(b_1,b_2,b_3)$ be two $3$-dimensional vectors.
+The \textbf{cross-product} of $\mathbf a,\mathbf b$ is a vector defined by
+	$$\mathbf a\times\mathbf b=(a_2b_3-a_3b_2,a_3b_1-a_1b_3,a_1b_2-a_2b_1)$$
+An easy way to remember the formula is the following.
+	$$\mathbf a\times\mathbf b=
+	\left|\begin{array}{ccc}
+	\mathbf i & \mathbf j & \mathbf k \\
+	a_1 & a_2 & a_3 \\
+	b_1 & b_2 & b_3
+	\end{array}\right|$$
+\end{defn}
+\end{frame}
+
+\begin{frame}
+\begin{prop}\label{prop-cross}
+Let $\mathbf a,\mathbf b,\mathbf c$ be $3$-dimensional vectors and $k$ a constant. 
+The following identity holds.
+\begin{enumerate}
+	\item $\mathbf a\times\mathbf 0=\mathbf 0\times\mathbf a=\mathbf 0$
+	\item $\mathbf a\times\mathbf a=\mathbf 0$
+	\item $\mathbf a\times\mathbf b=-\mathbf b\times \mathbf a$
+	\item $\mathbf a\times (k\mathbf b)=(k\mathbf a)\times \mathbf b=k(\mathbf a\times\mathbf b)$
+	\item $\mathbf a\times (\mathbf b+\mathbf c)=\mathbf a\times \mathbf b+\mathbf a\times\mathbf c$
+	\item $\mathbf a\cdot(\mathbf a\times\mathbf b)=\mathbf b\cdot(\mathbf a\times\mathbf b)=0$ (This shows that the cross product $\mathbf a\times\mathbf b$ is normal to the plane spanned by $\mathbf a$ and $\mathbf b$.)
+	\item $(\mathbf a\times\mathbf b)\times\mathbf c
+	=(\mathbf a\cdot\mathbf c)\mathbf b-(\mathbf b\cdot\mathbf c)\mathbf a$
+\end{enumerate}
+\end{prop}
+\end{frame}
+
+\begin{frame}
+\begin{thm}
+Let $\mathbf a,\mathbf b$ be two $3$-dimensional vectors. Then
+	$$\Vert \mathbf a\times\mathbf b\Vert =\Vert \mathbf a\Vert \cdot\Vert \mathbf b\Vert \cdot|\sin\theta|$$
+where $\theta$ is the angle between $\mathbf a$ and $\mathbf b$.
+\end{thm}
+\end{frame}
+
+\begin{frame}
+\begin{prop}\label{prop-det-prop}
+Let us denote $|A|$ by the determinant of a matrix $A$. Then the following holds
+	\begin{enumerate}
+		\item If $A$ has a row (or a column) whose entries are all zero, then $|A|=0$.
+		\item Let $B$ be the matrix obtained by interchanging two rows (or columns) of $A$. Then $|B|=-|A|$.
+		\item Let $B$ be a matrix obtained by multiply $c$ on a row (or column) followed by adding it to another row (or column).
+		Then $|B|=|A|$.
+	\end{enumerate}
+\end{prop}
+\end{frame}
+
+\begin{frame}
+\begin{defn}
+Let $A$ be a $n\times n$ matrix. A matrix $B$ satisfying
+	$$A\cdot B=B\cdot A=I_n$$
+is called the \textbf{inverse of $A$}, denoted by $B=A^{-1}$.
+If an inverse matrix $A^{-1}$ exists, then $A$ is said to be \textbf{non-singular}. 
+Otherwise, it is called \textbf{singular}.
+\end{defn}
+
+\begin{thm}\label{thm-sing}
+A matrix $A$ is singular if and only if $\det A=0$.
+\end{thm}
+\end{frame}
+
+\begin{frame}
+    \begin{prop}\label{prop-inv-mat} If $A$ is a $2\times 2$ matrix, then $A^{-1}$ is 
+	$$A^{-1}=\frac{1}{\det A}\begin{pmatrix}
+	a_{22} & -a_{21} \\ -a_{12} & a_{11} \end{pmatrix}$$
+For a $3\times 3$-matrix $B$, the inverse is given by
+	\begin{equation}\label{eqn-inv-3}
+	B^{-1}=\frac{1}{\det B}\begin{pmatrix}
+	c_{11} & -c_{21} & c_{31} \\
+	-c_{12} & c_{22} & -c_{32} \\
+	c_{13} & -c_{23} & c_{33}\end{pmatrix}
+	\end{equation}
+where each $c_{ij}$, called the \textbf{cofactor}, is the determinant of $2\times 2$-matrix obtained by deleting $i$th row and $j$th column. For example,
+	$$c_{21}=\left|\begin{array}{ccc}
+	b_{11}&b_{12}&b_{13}\\
+	b_{21}\makebox(-10,0){\rule[1ex]{0.4pt}{3\normalbaselineskip}}&b_{22}\makebox(-6,0){\rule[1ex]{4.5\normalbaselineskip}{0.4pt}}&b_{23}\\
+	b_{31}&b_{32}&b_{33}
+	\end{array}\right|
+	=\left|\begin{array}{cc}
+	b_{12}&b_{13}\\
+	b_{32}&b_{33}
+	\end{array}\right|$$
+Notice that the row and column indices are switched in \eqref{eqn-inv-3}.
+\end{prop}
+\end{frame}
+
+\begin{frame}
+    \begin{defn}\label{defn-abs-vec-sp}
+A \textbf{vector space} $V$ is a set of element called \textbf{vectors} satisfying the following properties:
+	\begin{enumerate}
+	\item (Zero vector) $V$ contains the \textbf{zero vector} $\mathbf 0$, which is a unique vector satisfying
+	$\mathbf 0 + \mathbf v = \mathbf v + \mathbf 0 = \mathbf v$ for all $\mathbf v\in V$.
+	\item (Vector sum) For any two vectors $\mathbf v$, $\mathbf w\in V$, the vector $\mathbf v+\mathbf w$ lies in $V$.
+	\item (Scalar multiplication) For any $k\in\mathbf R$ and $v\in V$, the vector $k\mathbf v$ lies in $V$.
+	\end{enumerate}
+A subset $V\subset\mathbf R^n$ is called a \textbf{vector subspace} if it is a vector space itself.
+\end{defn}
+\end{frame}
+
+\begin{frame}
+    \begin{exmp}
+	Let $\mathcal C^1(\mathbf R)$ be the set of all differentiable functions on $\mathbf R$
+	whose derivatives are continuous on $\mathbf R$. Since $f,g$ are such functions so is the function $h=f+g$.
+	Also for any $k\in\mathbf R$, the function $kf$ is differentiable and its derivative is continuous.
+    Thus $\mathcal C^1(\mathbf R)$ is a vector space. Likewise, we can define vectors spaces $\mathcal C^n(\mathbf R)$, $\mathcal C^\infty(\mathbf R)$
+    \end{exmp}
+\end{frame}
+
+\begin{frame}
+\begin{exmp}
+	For each constant $k\in\mathbf R$,
+	let $V_k$ be the set of all points on the line $y=kx$ in $\mathbf R^2$:
+		$$V_k = \{(x,y)\,|\,y=kx\}$$
+	Then $V_k$ is a vector subspace of $\mathbf R^2$.
+	Let $V_\infty$ be the vertical line $V_\infty = \{(0,y)\,|\,y\in\mathbf R\}$.
+    Then $V_\infty$ is also a vector subspace of $\mathbf R^2$
+\end{exmp}
+\end{frame}
+
+\begin{frame}
+    \begin{exmp}
+	Let $P$ be the set of all point on the plane 
+		$$P = \{(x,y,z)\,|\,ax+by+cz=0\}$$
+	in $\mathbf R^3$. By identifying points in $P$ as position vectors, we can say $P$ is a vector 
+	subspace of $\mathbf R^3$, orthogonal to $\mathbf n=(a,b,c)$ 
+	
+	In particular, let $V,W$ be vector subspace of $\mathbf R^n$. Then so is $V\cap W$. 
+	For example, let $V,W$ be vector subspace for two planes in $\mathbf R^3$ 
+	passing through the origin $\mathbf 0$. Then $V\cap W$ is either a line (if $V,W$ are transversal) 
+	or a plane (if $V=W$).
+\end{exmp}
+\end{frame}
+
+\begin{frame}
+    \begin{defn}
+Let $V$ a vector space and $\mathbf v_1,\cdots,\mathbf v_m\in V$.
+We say the vector space subspace 
+	$$W = \{a_1\mathbf v_1+\cdots +a_m\mathbf v_m\,|\,a_1,\cdots, a_m\in\mathbf R\}$$
+is \textbf{spanned} by $\mathbf v_1,\cdots,\mathbf v_m$,
+and denote by $W=\textup{span}\langle\mathbf v_1,\cdots,\mathbf v_m\rangle$.
+\end{defn}
+\end{frame}
+
+\begin{frame}
+\begin{defn}
+We say a vector space $V$ is \textbf{spanned by} the set of vectors $\{\mathbf v_1,\cdots,\mathbf v_n\}$,
+if every $v\in V$ can be expressed a linear combination of $v_i$'s:
+	$$v = a_1\mathbf v_1+\cdots a_n\mathbf v_n$$
+The set $\{\mathbf v_1,\cdots,\mathbf v_n\}$ is said to be \textbf{linearly independent}
+if the coefficients satisfying
+	$$a_1\mathbf v_1+\cdots a_n\mathbf v_n=\mathbf 0$$
+is the trivial ones, namely $a_1=\cdots=a_n=0$.
+\end{defn}
+
+
+\begin{defn}
+Let $\{\mathbf v_1,\cdots,\mathbf v_n\}$ be the set of linear independent vectors which spans the vector space $V$. 
+Such set is called the \textbf{basis} of $V$, and its element is called the \textbf{basis vector}.
+The \textbf{dimension} of $V$ is the number of basis vectors which spans $V$.
+\end{defn}
+\end{frame}
+
+\begin{frame}
+\begin{prob}
+\begin{enumerate}
+	\item Show that the vectors $\Vert\mathbf b\Vert\mathbf a +\Vert \mathbf a\Vert\mathbf b$
+	and $\Vert\mathbf b\Vert\mathbf a-\Vert\mathbf a\Vert\mathbf b$ are orthogonal.
+	\item Show that $\Vert \mathbf b\Vert \mathbf a +\Vert \mathbf a\Vert\mathbf b$ bisects the angle between $\mathbf a$ and $\mathbf b$.
+\end{enumerate}
+\end{prob}
+\end{frame}
+
+\begin{frame}
+\begin{prob}
+\begin{enumerate}
+\item Let $\mathbf a=(1,2,1)$, $\mathbf b=(2,1,2)$, and $\mathbf u=(0,1,-1)$.
+Suppose that the vector $\mathbf u$ can be decomposed by
+	$$\mathbf u = \mathbf u_1 + \mathbf u_2 + \mathbf u_3$$
+where $\mathbf u_1$ is parallel to $\mathbf a$, $\mathbf u_2$ is parallel to $\mathbf b$, and
+$\mathbf u_3$ is orthogonal to both $\mathbf a$ and $\mathbf b$.
+Find the vector $\mathbf u_1$, $\mathbf u_2$, $\mathbf u_3$ explicitly.
+\end{enumerate}
+\end{prob}
+\end{frame}
+
+\begin{frame}
+\begin{prob}
+\begin{enumerate}
+\item Find the distance between $P=(2,1,3)$ and the line $l(t) = (2,3,-2)+t(-1,1,-2)$.
+\item Find the distance between two parallel planes
+	$$2x-2y+z=5,\quad 2x-2y+z=20$$
+\item Find the distance between two skew lines
+	$$l_1(t) = (0,5,-1) + t(2,1,3)$$
+	$$l_2(t) = (-1,2,0) + t(1,-1,0)$$
+\end{enumerate}
+\end{prob}
+\end{frame}
+
+\begin{frame}
+\begin{prob}
+Let $\mathbf a = (a_1,a_2,a_3)$, $\mathbf b = (b_1,b_2,b_3)$, $\mathbf c = (c_1,c_2,c_3)$.
+Verify that
+$$(\mathbf a\times\mathbf b)\cdot\mathbf c =
+	\left|\begin{array}{ccc}
+	a_1 & a_2 & a_3 \\
+	b_1 & b_2 & b_3 \\
+	c_1 & c_2 & c_3
+	\end{array}\right|$$
+\end{prob}
+\end{frame}
+
+\begin{frame}
+\begin{prob}
+Imagine two concentric circles with radius $a,b$ ($b<a$) which rolls on flat line with the same angular velocity.
+A curtate cycloid is a trajectory of a point on the circle of radius $b$.
+Find a set of parametric equation for the curtate cycloid with $a=3$, $b=2$.
+\end{prob}
+\end{frame}
+\end{document}
+
