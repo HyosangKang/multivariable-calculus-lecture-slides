@@ -60,3 +60,29 @@ for i = 1 : N
     axis([0,xmax,0,6])
     drawnow
 end
+
+%%
+syms x y 
+
+simplify(((y*(x^2-y^2)+ x*y*2*x)*(x^2+y^2) - x*y*(x^2-y^2)*2*x) / (x^2+y^2)^2)
+
+%%
+syms x y
+
+f = x*y*(x^2-y^2)/(x^2+y^2);
+simplify(diff(f, y))
+
+%%
+clear all
+f = @(x,y) x.*(x.^2-y.^2);
+[X, Y] = meshgrid(linspace(-1,1));
+surf(X,Y,f(X,Y))
+
+%%
+f = @(x,y) x.*y./sqrt(x.^2+y.^2) ;
+[X Y] = meshgrid(linspace(-1,1));
+z = @(x,y) zeros(size(x));
+surf(X,Y,f(X,Y))
+hold on ;
+surf(X,Y,z(X,Y))
+hold off;
