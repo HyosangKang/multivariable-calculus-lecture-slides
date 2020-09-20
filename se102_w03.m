@@ -46,21 +46,25 @@ var.r
 
 f1 = @(x,y) x.^2-y.^2;
 f2 = @(x,y) 2*x.*y;
-ep = .1;
+ep = 2;
 x = linspace(1,1+ep);
 y = linspace(1,1+ep);
+
+for i = 1 : 100
 subplot(1,2,1)
-plot(x, ones(size(x))); hold on;
-plot(ones(size(y)), y); hold off;
+plot(x(1:i), ones(size(x(1:i)))); hold on;
+plot(ones(size(y(1:i))), y(1:i)); hold off;
 axis equal;
 axis([0,2,0,2]);
+drawnow
 
 subplot(1,2,2)
-plot(f1(x, ones(size(x))), f2(x, ones(size(x)))); hold on;
-plot(f1(ones(size(y)), y), f2(ones(size(y)), y)); hold off;
+plot(f1(x(1:i), ones(size(x(1:i)))), f2(x(1:i), ones(size(x(1:i))))); hold on;
+plot(f1(ones(size(y(1:i))), y(1:i)), f2(ones(size(y(1:i))), y(1:i))); hold off;
 axis equal
 axis([-2,2,0,4])
-
+drawnow
+end
 
 
 
