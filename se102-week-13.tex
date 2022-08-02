@@ -1,0 +1,232 @@
+\documentclass[t]{beamer}
+\usefonttheme{serif}
+
+\usepackage{amsmath,amsthm,amssymb,amsfonts,amscd,mathrsfs,amsxtra,multirow,kotex,mathtools,gensymb,textcomp,lipsum,tikz,verbatim,color,soul,courier,mdframed,xcolor}
+\usepackage[normalem]{ulem}
+\usetikzlibrary{calc,matrix,arrows,chains,positioning,scopes}
+\usepackage{pdfpages,cancel}
+
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{prop}[thm]{Proposition}
+
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{exmp}[thm]{Example}
+\newtheorem{excs}[thm]{Exercise}
+\newtheorem{rem}[thm]{Remark}
+\newtheorem{prob}[thm]{Problem}
+\newtheorem{cor}[thm]{Corollary}
+
+\newcommand \tr[1]{\textcolor{red}{#1}}
+\newcommand{\tikzmark}[1]{\tikz[overlay,remember picture] \node (#1) {};}
+\newcommand{\varep}{\varepsilon}
+\newcommand{\DrawBox}[1][]{%
+    \tikz[overlay,remember picture]{
+    \draw[red,#1]
+      ($(left)+(-0.2em,0.9em)$) rectangle
+      ($(right)+(0.2em,-0.3em)$);}
+}
+
+\newcommand{\tikzmarkk}[2]{
+    \tikz[overlay,remember picture,baseline] 
+    \node[anchor=base] (#1) {$#2$};
+}
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+
+\tikzset{join/.code=\tikzset{after node path={%
+\ifx\tikzchainprevious\pgfutil@empty\else(\tikzchainprevious)%
+edge[every join]#1(\tikzchaincurrent)\fi}}}
+
+\tikzset{>=stealth',every on chain/.append style={join},
+         every join/.style={->}}
+\tikzstyle{labeled}=[execute at begin node=$\scriptstyle,
+   execute at end node=$]
+
+\newenvironment<>{proofs}[1][\proofname]{%
+   \par
+   \def\insertproofname{#1\@{.}}%
+   \usebeamertemplate{proof begin}#2}
+ {\usebeamertemplate{proof end}}
+ 
+
+\addtobeamertemplate{navigation symbols}{}{%
+    \usebeamerfont{footline}%
+    \usebeamercolor[fg]{footline}%
+    \hspace{1em}%
+    \raisebox{2pt}[0pt][0pt]{\insertframenumber/\inserttotalframenumber}
+}
+\setbeamercolor{footline}{fg=blue}
+\setbeamerfont{footline}{series=\bfseries}
+\title[]{SE102:Multivariable Calculus}
+
+\author[]{Hyosang Kang\inst{1}}
+
+\institute[]{\inst{1}Division of Mathematics\\ School of Interdisciplinary Studies\\ DGIST}
+
+\date[]{Week 13}
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}
+\begin{thm}[Stokes]
+Let $S$ be an oriented surface with a piecewise continuous boundary $C$.
+For $\mathbf F$ be a continuous vector field defined on $S$. Then
+	$$\oint_C\mathbf F\cdot d\mathbf s=\iint_S\nabla\times\mathbf F\cdot d\mathbf S$$
+where $C$ and $S$ are \underline{positively}\footnote{The boundary is \textbf{postively} oriented
+if the direction is counter-clockwise with $\mathbf n$ being \emph{upward}.} oriented.
+\end{thm}
+\end{frame}
+
+\begin{frame}
+\begin{proof}
+Let $\mathbf F = \langle P,Q,R\rangle$. 
+Suppose that the surface $S$ is given by the graph of a function $z=f(x,y)$ on a bounded domain $D\subset\mathbf R^2$.
+Let $X(x,y) = (x,y,f(x,y))$ be the parametrization of $S$. Then
+	\begin{align*}
+	\iint_S \nabla\times \mathbf Fd\mathbf S 
+	&= \iint_D-(R_y-Q_z)f_x-(P_z-R_x)f_y+(Q_x-P_y) dA \\
+	&= \iint_D\frac{\partial}{\partial x}\left(Q+Rf_y\right) - \frac{\partial}{\partial y}\left(P+Rf_x\right) dA
+	\end{align*}
+Let $C'$ be a planar curve which bounds that area $D$. By Green's theorem, the last integral becomes
+	$$\oint_{C'} (P+Rf_x) dx + (Q+Rf_y) dy
+	= \oint_C Pdx + Qdy + Rdz = \oint_C \mathbf F\cdot d\mathbf s$$
+\end{proof}
+\end{frame}
+
+\begin{frame}
+\begin{rem}
+The Stokes' theorem provides the meaning of curl $\nabla\times\mathbf F$ of a vector field $\mathbf F$. Suppose that the surface $S$ is planar disk with sufficiently small radius $r$ centered at $(x_0,y_0,z_0)$. Then
+	$$\oint_C\mathbf F\cdot d\mathbf s \approx \textrm{area}S\cdot(\nabla\times\mathbf F)(x_0,y_0)\circ\mathbf n$$
+	$$(\nabla\times\mathbf F)(x_0,y_0)\circ\mathbf n \approx \frac{1}{\textrm{area}S}\oint_C\mathbf F\cdot d\mathbf s$$
+where $\mathbf n$ is the orientation of $S$.
+Therefore, the curl of a vector field $\mathbf F$ at the point $p$ on the surface $S$ has a projection onto the orthogonal direction of a surface $S$ equal to the work done by $\mathbf F$ along the neighboring boundary of the point $p$ on $S$. 
+\end{rem}
+\end{frame}
+
+\begin{frame}
+\begin{exmp}
+Let $S$ be the surface bounded by $z=1-x^2-y^2$, $z\ge0$
+with upward orientation ($\mathbf n\cdot\mathbf k\ge0$).
+Confirm that Stokes' theorem holds for $\mathbf F=(y,-x,0)$.
+\end{exmp}
+\end{frame}
+
+\begin{frame}
+\begin{thm}[Divergence Theorem]
+Let $V$ be a region in $\mathbf R^3$ whose boundary $S=\partial V$ is a \underline{closed} surface.\footnote{A surface is called \textbf{closed} if it has \underline{no} boundary curve.}
+For a vector field $\mathbf F$ defined on $V$,
+	$$\iint_S\mathbf F\cdot d\mathbf S=\iiint_V\nabla\cdot\mathbf FdV$$
+where the orientation of $S$ is the \underline{outward} direction.
+\end{thm}
+\end{frame}
+
+\begin{frame}
+\begin{proof}
+Note that for $\mathbf F = (P,Q,R)$,
+	$$\iint_S \mathbf F \cdot d\mathbf S = \iint_S P\mathbf i \cdot \mathbf n dS + \iint_S Q\mathbf j \cdot \mathbf n dS + \iint_S R\mathbf k \cdot \mathbf n dS$$
+Suppose that the volume $V$ is given by
+	$$V=\{(x,y,z) \,|\, h_1(x,y)\le z \le h_2(x,y),\, (x,y)\in D\}.$$
+where $D$ is the region in $\mathbf R^2$ on which the volume $V$ is defined.
+Then 
+	\begin{align*}
+	\iint_S R\mathbf k \cdot \mathbf n dS 
+	&= \iint_{S_1}R\mathbf k \cdot \mathbf n dS + \iint_{S_2}R\mathbf k \cdot \mathbf n dS \\
+	&= \iint_D R(x,y,h_2(x,y))-R(x,y,h_1(x,y)) dxdy \\
+	&= \iiint_V R_zdV
+	\end{align*}
+\end{proof}
+\end{frame}
+
+\begin{frame}
+\begin{exmp}
+Compute the surface integral $\displaystyle\iint_S\mathbf F\cdot d\mathbf S$ where 
+$\displaystyle \mathbf F=(z^2,\frac{1}{3}x^3+\tan z,z+y^2)$ and $S$ is the closed surface $x^2+y^2+z^2=1$.
+\end{exmp}
+\end{frame}
+
+\begin{frame}
+\begin{exmp}
+Let $S$ be a parabola $x^2+y^2+z=2$ above the plane $z=1$.
+Find the flux of $\mathbf F=(z\tan^{-1}(y^2),z^3\ln(x^2+1),z)$ to the upward direction of $S$.
+\end{exmp}
+\end{frame}
+
+\begin{frame}
+\begin{exmp}
+Let $\displaystyle \mathbf F = \frac{(x,y,z)}{(x^2+y^2+z^2)^{3/2}}$
+and $S$ be the surface $z=4-x^2-y^2$, $z\ge0$ with upward orientation $\mathbf n\cdot\mathbf k\ge0$.
+Use divergence theorem to compute the flux $\displaystyle\iint_S\mathbf F\cdot d\mathbf S$.
+(How should we choose the volume $V$?)
+\end{exmp}
+\end{frame}
+
+\begin{frame}
+Multivariable Calculus summerizes in two sentences:
+\begin{itemize}
+	\item Derivative is a linear transformation.
+		\begin{itemize}
+			\item Derivative $Df(\mathbf a)$ of a multivariable function
+			is a linear map between tangent spaces at $\mathbf a$ and $f(\mathbf a)$.
+		\end{itemize}
+	\item Divergence theorem is a stokes theorem.
+		\begin{itemize}
+			\item The general form of stokes theorem is
+				$$\int_V d\mu = \int_{\partial V}\mu$$
+			where $\nu$ is a differential $(k-1)$-form 
+			and $V$ is a $k$-dimensional space. 
+			The differential $d\mu$ is a $k$-form.
+			The (special) Stokes theorem is	when 
+				$$\mu = Pdx + Qdy = Rdz$$
+			and divergence theorem is when 
+				$$\mu = Pdx\wedge dy + Qdy\wedge dz + Rdz\wedge dx.$$
+		\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\begin{prob}
+Let 
+$$\mathbf A = \frac{(x,y,z)}{(x^2+y^2+z^2)^{3/2}}$$
+Let $S$ be a surface bounded by $z=4-x^2-y^2$, $z\ge0$, orieted upward.
+Find
+	$$\iint_S\mathbf A\cdot d\mathbf S$$.
+\end{prob}
+\end{frame}
+
+\begin{frame}
+\begin{prob}
+Let $S$ be the surface bounded by $z=e^{-x^2-y^2}$ and $z\ge1/e$.
+Let $\mathbf n$ be the orientation of $S$ satisfying $\mathbf n\cdot\mathbf k\ge0$.
+Find the flux of 
+	$$\mathbf F=(e^{x+y}-xe^{y+z}, e^{y+z}-e^{x+y},2)$$
+on $S$ to the direction of $\mathbf n$.
+\end{prob}
+\end{frame}
+
+\begin{frame}
+\begin{prob}
+Let $C$ be the intersection of $z=1-2(x^2+y^2)$ and $z=x^2-y^2$
+oriented counter-clockwise. 
+Find $\displaystyle\oint_C\mathbf F\cdot d\mathbf s$ where
+$$\mathbf F=(y\cos(x)-yz,\sin x,e^z)$$
+\end{prob}
+\end{frame}
+
+\begin{frame}
+\begin{prob}
+Let $S=\partial V$ be a \underline{closed} surface. Prove the following.
+	\begin{enumerate}
+		\item For any constant vector field $\mathbf C$, 
+			$$\iint_S\mathbf C\cdot d\mathbf S=0$$
+		\item For any vector field $\mathbf F$,
+			$$\iint_S\nabla\times\mathbf F\cdot d\mathbf S=0$$
+	\end{enumerate}
+\end{prob}
+\end{frame}
+\end{document}

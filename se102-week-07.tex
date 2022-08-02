@@ -1,0 +1,198 @@
+\documentclass[t]{beamer}
+\usefonttheme{serif}
+
+\usepackage{amsmath,amsthm,amssymb,amsfonts,amscd,mathrsfs,amsxtra,multirow,kotex,mathtools,gensymb,textcomp,lipsum,tikz,verbatim,color,soul,courier,mdframed,xcolor}
+\usepackage[normalem]{ulem}
+\usetikzlibrary{calc,matrix,arrows,chains,positioning,scopes}
+\usepackage{pdfpages}
+
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{prop}[thm]{Proposition}
+
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{exmp}[thm]{Example}
+\newtheorem{excs}[thm]{Exercise}
+\newtheorem{rem}[thm]{Remark}
+\newtheorem{prob}[thm]{Problem}
+\newtheorem{cor}[thm]{Corollary}
+
+\newcommand \tr[1]{\textcolor{red}{#1}}
+\newcommand{\tikzmark}[1]{\tikz[overlay,remember picture] \node (#1) {};}
+\newcommand{\varep}{\varepsilon}
+\newcommand{\DrawBox}[1][]{%
+    \tikz[overlay,remember picture]{
+    \draw[red,#1]
+      ($(left)+(-0.2em,0.9em)$) rectangle
+      ($(right)+(0.2em,-0.3em)$);}
+}
+
+\newcommand{\tikzmarkk}[2]{
+    \tikz[overlay,remember picture,baseline] 
+    \node[anchor=base] (#1) {$#2$};
+}
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+
+\tikzset{join/.code=\tikzset{after node path={%
+\ifx\tikzchainprevious\pgfutil@empty\else(\tikzchainprevious)%
+edge[every join]#1(\tikzchaincurrent)\fi}}}
+
+\tikzset{>=stealth',every on chain/.append style={join},
+         every join/.style={->}}
+\tikzstyle{labeled}=[execute at begin node=$\scriptstyle,
+   execute at end node=$]
+
+\newenvironment<>{proofs}[1][\proofname]{%
+   \par
+   \def\insertproofname{#1\@{.}}%
+   \usebeamertemplate{proof begin}#2}
+ {\usebeamertemplate{proof end}}
+ 
+
+\addtobeamertemplate{navigation symbols}{}{%
+    \usebeamerfont{footline}%
+    \usebeamercolor[fg]{footline}%
+    \hspace{1em}%
+    \raisebox{2pt}[0pt][0pt]{\insertframenumber/\inserttotalframenumber}
+}
+\setbeamercolor{footline}{fg=blue}
+\setbeamerfont{footline}{series=\bfseries}
+\title[]{SE102:Multivariable Calculus}
+
+\author[]{Hyosang Kang\inst{1}}
+
+\institute[]{\inst{1}Division of Mathematics\\ School of Interdisciplinary Studies\\ DGIST}
+
+\date[]{Week 07}
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}
+\begin{exmp}
+Find all extremals of $f(x,y)=xy-y+x-2$
+on the region $x^2+y^2\le2$.
+\end{exmp}
+\end{frame}
+
+\begin{frame}
+\begin{exmp}
+Find all extremals of 
+$f(x,y) = - x^2 + 3xy - 2y^2$ on the region 
+$2x^2 - 6xy + 5y^2\le 1$.
+\end{exmp}
+\end{frame}
+
+\begin{frame}
+\begin{exmp}
+Find the dimensions of the cube inscribed in the
+sphere of radius $2$ whose surface area is maximum.
+\end{exmp}
+\end{frame}
+
+\begin{frame}
+\begin{exmp}
+Find the point on the surface $x^3+y^2+z=2$ 
+closest to the origin.
+\end{exmp}
+\end{frame}
+    
+\begin{frame}
+\begin{exmp}
+Suppose  $f(x,y)$ is a differentiable function defined 
+on $\mathbf R^2$. If $(x_0,y_0)$ is a critical point, 
+explain why it is a saddle point if the Hessian 
+$H_f(x_0,y_0)$ is negative regardless of the value of 
+$f_{xx}(x_0,y_0)$. 
+\end{exmp}
+\end{frame}
+
+\begin{frame}
+\begin{exmp}
+Let $\mathbf v$, $\mathbf w$, $\mathbf u$ be
+linearly independent $3$-dimensional position vectors.
+Show that the volume of the parallelogram bounded by 
+these vectors is 
+$\left|(\mathbf v\times\mathbf w)\cdot\mathbf u\right|$.
+\end{exmp}
+\end{frame}
+
+\begin{frame}[t]
+\begin{exmp}
+Discuss the difference on geometric configurations
+of three vectors $\mathbf v$, $\mathbf w$, $\mathbf u$
+when the value of
+$(\mathbf v\times\mathbf w)\cdot\mathbf u$ is 
+positive, negative, or zero.
+\end{exmp}
+\end{frame}
+
+\begin{frame}[t]
+\begin{exmp}
+Prove or disprove: 
+for any vectors $\mathbf u$, $\mathbf v$, $\mathbf w$,
+\begin{enumerate}
+\item $\mathbf u\cdot(\mathbf v\times\mathbf w)
+ = (\mathbf u\times\mathbf w)\cdot\mathbf w$.
+\item $\mathbf u\times(\mathbf v\times\mathbf w)
+ = (\mathbf u\times\mathbf v)\times\mathbf w$.
+\end{enumerate}
+\end{exmp}
+\end{frame}
+
+\begin{frame}
+\begin{exmp}
+Determine whether the limit exists:
+$$\lim_{(x,y)\rightarrow(0,0)}
+\frac{xy+yx^2}{x^2+y^2}$$ 
+\end{exmp}
+\end{frame}
+
+\begin{frame}
+\begin{exmp}
+Determine whether the limit exists:
+$\displaystyle \lim_{(x,y)\rightarrow(0,0)}
+\frac{x^2\sin^2y}{x^2+2y^2}$
+\end{exmp}
+\end{frame}
+
+\begin{frame}
+\begin{exmp}
+Determine whether the function is continuous at $(0,0)$.
+$$f(x,y) = \begin{dcases}
+\frac{xy}{x^2+xy+y^2} & (x,y)\neq(0,0)\\
+0 & (x,y) = (0,0)\end{dcases}$$
+\end{exmp}
+\end{frame}
+
+\begin{frame}
+\begin{exmp}
+Find all points where the directional derivative
+of $f(x,y)=x^2+y^2-2x-4y$ to the vector 
+$\mathbf u = \frac{1}{2} (1,1)$ is maximized.
+\end{exmp}
+\end{frame}
+
+\begin{frame}
+\begin{exmp}
+Given a fixed $c>0$, 
+show that the sum of three intercepts of any tangent plane
+to the surface $\sqrt x+\sqrt y+\sqrt z=\sqrt c$
+is constant.
+\end{exmp}    
+\end{frame}
+
+\begin{frame}
+\begin{exmp}
+Consider a small circle of radius $b$
+rolling inside the larger circle of radius $a$ ($a>b$).
+Find the parametric equations of 
+the trajectory of the point on the small circle.
+\end{exmp}
+\end{frame}
+\end{document}
