@@ -82,7 +82,7 @@ The \textbf{iterated integral} $\displaystyle \int_c^d\int_a^b f(x,y) dxdy$ on $
 \begin{defn}[Double integral]
 Let $f(x,y)$ be a function defined on a rectangular region $D=[a,b]\times[c,d]$.
 Let us subdivide the intervals $[a,b]$ (respectively $[c,d]$) by $n$ ($m$, respectively) intervals.
-	$$a=x_0<x_1<\cdots<x_n=b,\quad c=y_0<y_1<\cdots<y_m=d$$
+	\[a=x_0<x_1<\cdots<x_n=b,\quad c=y_0<y_1<\cdots<y_m=d\]
 \end{defn}
 \end{frame}
 
@@ -91,10 +91,10 @@ The region $D$ is subdivided by $nm$ rectangular regions $D_{ij}=[x_{i-1},x_i]\t
 For each $i=1,\cdots,n$ and $j =1,\cdots,m$, let us choose a point $(x_i^*,y_j^*)\in D_{ij}$.
 Denote $\Delta x_i=x_{i}-x_{i-1}$, $\quad\Delta y_j=y_{j}-y_{j-1}$.
 The sum 
-	$$\sum_{i=1}^n\sum_{j=1}^mf(x_i^*,y_j^*)\Delta x_i\Delta y_j$$
+	\[\sum_{i=1}^n\sum_{j=1}^mf(x_i^*,y_j^*)\Delta x_i\Delta y_j\]
 is called the \textbf{Riemann sum} of $f(x,y)$ with respect to the subdivision $D_{ij}$'s.
 If the limit exists when $n,m\to\infty$, we denote 
-	$$\iint_DfdA=\lim\sum_{i=1}^n\sum_{j=1}^mf(x_i^*,y_i^*)\Delta x_i\Delta y_j$$
+	\[\iint_DfdA=\lim\sum_{i=1}^n\sum_{j=1}^mf(x_i^*,y_i^*)\Delta x_i\Delta y_j\]
 This is called the \textbf{double integral} of $f$ over $D$.
 \end{frame}
 
@@ -120,11 +120,11 @@ is not integrable on $[0,1]\times[0,1]$.
 \begin{thm}[Fubini I]
 Let $f(x,y)$ be a continuous function defined on $D=[a,b]\times[c,d]$.
 Then
-	$$\iint_DfdA = \int_a^b \int_c^df(x,y)dy dx = \int_c^d \int_a^bf(x,y)dx dy$$
+	\[\iint_DfdA = \int_a^b \int_c^df(x,y)dy dx = \int_c^d \int_a^bf(x,y)dx dy\]
 \end{thm}
 \begin{exmp} 
 Compute
-	$$\iint\displaylimits_{[0,1]\times[0,1]}\frac{y}{1+xy}dxdy$$
+	\[\iint\displaylimits_{[0,1]\times[0,1]}\frac{y}{1+xy}dxdy\]
 using Fubini's theorem.
 \end{exmp}
 \end{frame}
@@ -165,7 +165,7 @@ Let us define a new function $F(x,y)$ as follows.
 	0 & (x,y)\notin D
 	\end{dcases}$$
 Then the \textbf{definite integral} of $f$ over the domain $D$ is defined as 
-	$$\iint_Df(x,y)dxdy=\iint\displaylimits_{[a,b]\times[c,d]}F(x,y)dxdy$$
+	\[\iint_Df(x,y)dxdy=\iint\displaylimits_{[a,b]\times[c,d]}F(x,y)dxdy\]
 \end{defn}
 \end{frame}
 
@@ -174,10 +174,10 @@ Then the \textbf{definite integral} of $f$ over the domain $D$ is defined as
 Let  $f(x,y)$ be a continuous function defined on $D$.
 If $D=\{(x,y)\,|\,a\le x\le b,\, g_1(x)\le y\le g_2(x)\}$,
 then
-	$$\iint_Df(x,y)dxdy=\int_a^b \int_{g_1(x)}^{g_2(x)}f(x,y)dy dx$$
+	\[\iint_Df(x,y)dxdy=\int_a^b \int_{g_1(x)}^{g_2(x)}f(x,y)dy dx\]
 Similarly, if $D=\{(x,y)\,|\,c\le y\le d,\, h_1(y)\le x\le h_2(y)\}$,
 then
-	$$\iint_Df(x,y)dxdy=\int_c^d \int_{h_1(y)}^{h_2(y)}f(x,y)dx dy$$
+	\[\iint_Df(x,y)dxdy=\int_c^d \int_{h_1(y)}^{h_2(y)}f(x,y)dx dy\]
 \end{thm}
 \end{frame}
 
@@ -197,23 +197,23 @@ Find which integration works.
 \begin{defn}
 Let $f(x,y,z)$ be a function defined on the boxed domain $D=[a,b]\times[c,d]\times[e,f]$.
 The \textbf{triple integral} of $f(x,y,z)$ over $D$ is denoted by
-	$$\iiint\displaylimits_{[a,b]\times[c,d]\times[e,f]}\mkern-18mu f(x,y,z)dxdydz$$
+	\[\iiint\displaylimits_{[a,b]\times[c,d]\times[e,f]}\mkern-18mu f(x,y,z)dxdydz\]
 If $f$ is defined on a region $V\subset[a,b]\times[c,d]\times[e,f]$,
 Then define
 	$$F(x,y,z) = \begin{dcases}
 	f(x,y,z) & \textrm{if }(x,y,z)\in V \\
 	0 & \textrm{otherwise} \end{dcases}$$
 Then the triple integral is defined as
-	$$\iiint_Vf(x,y,z)dxdydz =\mkern-20mu \iiint\displaylimits_{[a,b]\times[c,d]\times[e,f]}\mkern-18mu F(x,y,z)dxdydz$$
+	\[\iiint_Vf(x,y,z)dxdydz =\mkern-20mu \iiint\displaylimits_{[a,b]\times[c,d]\times[e,f]}\mkern-18mu F(x,y,z)dxdydz\]
 \end{defn}
 \end{frame}
 
 \begin{frame}
 \begin{thm}[Fubini III]
 Let $f(x,y,z)$ be a continuous function defined on the region $V$.
-	$$V=\{(x,y,z)\,|\,a\le x\le b,\,g_1(x)\le y\le g_2(x),\, h_1(x,y)\le z\le h_2(x,y)\}$$
+	\[V=\{(x,y,z)\,|\,a\le x\le b,\,g_1(x)\le y\le g_2(x),\, h_1(x,y)\le z\le h_2(x,y)\}\]
 Then the following holds.
-	$$\iiint_Vf(x,y,z)dxdydz = \int_a^b \int_{g_1(x)}^{g_2(x)} \int_{h_1(x,y)}^{h_2(x,y)}f(x,y,z)dz dy dx$$
+	\[\iiint_Vf(x,y,z)dxdydz = \int_a^b \int_{g_1(x)}^{g_2(x)} \int_{h_1(x,y)}^{h_2(x,y)}f(x,y,z)dz dy dx\]
 \end{thm}
 \begin{figure}[h]
 \begin{center}
@@ -226,14 +226,14 @@ Then the following holds.
 \begin{exmp}
 Let $V$ be a parallelopiped region bounded by $6$ planes : $2x=y$, $2x=y+2$, $y=0$, $y=4$, $z=0$, $z=3$.
 Compute
-	$$\iiint_V\frac{2x-y}{2}+\frac{z}{3}dxdydz$$
+	\[\iiint_V\frac{2x-y}{2}+\frac{z}{3}dxdydz\]
 \end{exmp}
 \end{frame}
 
 \begin{frame}
 \begin{defn}
 Given an interval $I\subset\mathbf R$, a curve $C$ parametrized by $c:I\rightarrow\mathbf R^n$
-	$$c(t)=(x_1(t),x_2(t),\cdots,x_n(t))$$
+	\[c(t)=(x_1(t),x_2(t),\cdots,x_n(t))\]
 is \textbf{piecewise differentiable} if all coordinate function $x_i(t)$ are $\mathcal C^n$
 on the interval $I$ except for finitely many points.
 \end{defn}
@@ -242,7 +242,7 @@ Let $C$ be a piecewise differentiable curve on $\mathbf R^2$ parametrized by $c:
 Let $c'(t)=(x'(t),y'(t))$ be the velocity vector at the point $c(t)$.
 Let $f(x,y)$ be a function defined on the curve $C$.
 Then the \textbf{line integral} of $f(x,y)$ along $C$ is defined as
-	$$\int_Cfds=\int_a^bf(c(t))|c'(t)|dt.$$
+	\[\int_Cfds=\int_a^bf(c(t))|c'(t)|dt.\]
 \end{defn}
 \end{frame}
 
@@ -264,7 +264,7 @@ Let us write $t = h(\tau)$. Then
 
 \begin{frame}
 \begin{exmp}
-Let us compute the line integral $$\displaystyle\int_C (2+x^2y)ds$$
+Let us compute the line integral \[\displaystyle\int_C (2+x^2y)ds\]
 where $C$ is the unit circle centered at the origin with counter clockwise orientation.
 \end{exmp}
 \end{frame}
@@ -273,7 +273,7 @@ where $C$ is the unit circle centered at the origin with counter clockwise orien
 \begin{defn}
 Let $D$ be a region in $\mathbf R^2$ and $S$ a suface in $\mathbf R^3$.
 A map $X:D\rightarrow S$
-	$$X(u,v)=(x(u,v),y(u,v),z(u,v))$$
+	\[X(u,v)=(x(u,v),y(u,v),z(u,v))\]
 is called the \textbf{parametrization} of $S$ if
 it is one-to-one correspondence and
 every partial derivative of $x,y,z$ 
@@ -297,7 +297,7 @@ The \textbf{surface integral} of $f$ on $S$ is defined by
 \begin{exmp}
 Let $S$ be the surface defined by the graph of $z=\sqrt{x^2+y^2}$ over the disk $x^2+y^2\le 1$.
 Evaluate 
-	$$\iint_S zdS$$
+	\[\iint_S zdS\]
 \end{exmp}
 \end{frame}
 

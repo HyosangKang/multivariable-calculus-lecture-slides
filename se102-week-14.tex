@@ -87,9 +87,9 @@ The integral $\displaystyle\iint_Df(x,y)dxdy$ is called \textbf{improper} if it 
 \begin{exmp}
 Let $D= \mathbf R^2$ be the entire $2$-dimensional plane. 
 Let us compute 
-	$$\iint_{\mathbf R^2}e^{-x^2-y^2}dxdy$$
+	\[\iint_{\mathbf R^2}e^{-x^2-y^2}dxdy\]
 By polar coordinate $T(r,\theta)=(r\cos\theta,r\sin\theta)$,
-	$$T^{-1}(D) = [0,\infty)\times[0,2\pi].$$	
+	\[T^{-1}(D) = [0,\infty)\times[0,2\pi].\]	
 Thus by change of coordinates,
 	$$\iint_{\mathbf R^2}e^{-x^2-y^2}dxdy = \int_0^\infty \int_0^{2\pi} e^{-r^2}rd\theta dr 
 	= 2\pi \left(\frac{-1}{2}e^{-r^2}\right)\Big|_0^\infty = \pi$$
@@ -99,7 +99,7 @@ Thus by change of coordinates,
 \begin{frame}
 \begin{defn}\label{defn-Gamma}
 The \textbf{gamma function} $\Gamma:\mathbf R\rightarrow \mathbf R$ is defined by
-	$$\Gamma(p)=\int_0^\infty x^{p-1}e^{-x}dx$$
+	\[\Gamma(p)=\int_0^\infty x^{p-1}e^{-x}dx\]
 \end{defn}
 \begin{exmp}
 \begin{enumerate}
@@ -113,7 +113,7 @@ The \textbf{gamma function} $\Gamma:\mathbf R\rightarrow \mathbf R$ is defined b
 \begin{frame}
 \begin{defn}
 The \textbf{beta function} $B(x,y):\mathbf R^2\to\mathbf R$ is defined by
-	$$B(x,y) = \int_0^1t^{x-1}(1-t)^{y-1}dt$$
+	\[B(x,y) = \int_0^1t^{x-1}(1-t)^{y-1}dt\]
 \end{defn}
 
 \begin{prop}
@@ -132,9 +132,9 @@ side length $1$. Then the volume of $V$ is $1$.
 \begin{rem}
 Let $dx_1\wedge\cdots\wedge dx_n$ be a $n$-form.
 The definition above can be written as
-	$$\int_{[0,1]^n}dx_1\wedge\cdots\wedge dx_n = 1.$$
+	\[\int_{[0,1]^n}dx_1\wedge\cdots\wedge dx_n = 1.\]
 The volume of $n$-dimensional region $V$ is defined by 
-	$$\int_V dx_1\wedge\cdots\wedge dx_n.$$
+	\[\int_V dx_1\wedge\cdots\wedge dx_n.\]
 What does anti-commutivity of the wedge product
 (i.e. $dx\wedge dy = -dy \wedge dx$) imply?
 \end{rem}
@@ -145,10 +145,10 @@ What does anti-commutivity of the wedge product
 The $n$-dimensional ball of radius $r$
 is the set of points in $4$-dimensional space 
 defined by 
-	$$B_n(r) = \{(x_1,\cdots,x_n)\mid x_1^2+\cdots+x_n^2\le r^2\}.$$
+	\[B_n(r) = \{(x_1,\cdots,x_n)\mid x_1^2+\cdots+x_n^2\le r^2\}.\]
 The $n-1$-dimensional sphere of radius $r$
 is the boundary of $B_n(r)$, defined by 
-	$$S_{n-1}(r) = \{(x_1,\cdots,x_n)\mid x_1^2+\cdots+x_n^2=1\}.$$
+	\[S_{n-1}(r) = \{(x_1,\cdots,x_n)\mid x_1^2+\cdots+x_n^2=1\}.\]
 \end{defn}
 \end{frame}
 
@@ -168,7 +168,7 @@ computed similarly.)
 Let $T:\mathbf R^n\to\mathbf R^n$ be a 
 transformation (i.e. one-to-one, differentiable)
 such that 
-	$$T(u_1,\cdots,u_n) = (x_1,\cdots,x_n).$$
+	\[T(u_1,\cdots,u_n) = (x_1,\cdots,x_n).\]
 If $U$ be a region in $\mathbf R^n$ and $V=T(U)$.
 Then 
 	$$\int_Vdx_1\wedge\cdots\wedge dx_n
@@ -190,7 +190,7 @@ be a transformation defined by
 	\end{align*}
 Such $T$ is called a $4$-spherical transformation
 and the Jacobian is
-	$$J_T = r^3\sin^2\theta_1\sin\theta_2$$
+	\[J_T = r^3\sin^2\theta_1\sin\theta_2\]
 Thus the volume of $B_4(1)$ is
 	$$\int_0^1\int_0^\pi\int_0^\pi\int_0^{2\pi}
 	r^3\sin^2\theta_1\sin\theta_2d\phi d\theta_2
@@ -204,7 +204,7 @@ As we slice the $4$-dimensional ball $B_4(1)$
 at each $w$-coordinate, we obtain $3$-dimensional
 ball of radius $\sqrt{1-w^2}$.
 Thus the volume of $B_4(1)$ is
-	$$\int_{-1}^1\textrm{vol} B_3(\sqrt{1-w^2})dV dw$$
+	\[\int_{-1}^1\textrm{vol} B_3(\sqrt{1-w^2})dV dw\]
 Since we know $\displaystyle \textrm{vol}B_3(r) = \frac{4\pi}{3}r^3$,
 we can compute the integral using Gamma and Beta functions.
 \end{exmp}
@@ -215,11 +215,11 @@ we can compute the integral using Gamma and Beta functions.
 The ball $B_4(1)$ is the union of $3$-dimensional
 spheres $S_3(r)$ for $0\le r\le 1$.
 Thus the volume of $B_4(1)$ is
-	$$\int_0^1 S_3(r)dr = \int_0^1\textrm{vol}S_3(1)r^3dr = \textrm{vol}S_3(1)/4$$
+	\[\int_0^1 S_3(r)dr = \int_0^1\textrm{vol}S_3(1)r^3dr = \textrm{vol}S_3(1)/4\]
 Meanwhile, the $3$-dimensional sphere $S_3(1)$ is the union of
 product of two circles $S_1(r)\times S_1(r')$ where $r^2+r'^2=1$.
 Thus the volume of $S_3(1)$ is
-	$$\int_0^{\pi/2}\textrm{vol}S_1(r)\textrm{vol}S_1(r')d\theta=2\pi^2$$
+	\[\int_0^{\pi/2}\textrm{vol}S_1(r)\textrm{vol}S_1(r')d\theta=2\pi^2\]
 \end{exmp}
 \end{frame}
 

@@ -77,7 +77,7 @@ edge[every join]#1(\tikzchaincurrent)\fi}}}
 \begin{thm}[Stokes]
 Let $S$ be an oriented surface with a piecewise continuous boundary $C$.
 For $\mathbf F$ be a continuous vector field defined on $S$. Then
-	$$\oint_C\mathbf F\cdot d\mathbf s=\iint_S\nabla\times\mathbf F\cdot d\mathbf S$$
+	\[\oint_C\mathbf F\cdot d\mathbf s=\iint_S\nabla\times\mathbf F\cdot d\mathbf S\]
 where $C$ and $S$ are \underline{positively}\footnote{The boundary is \textbf{postively} oriented
 if the direction is counter-clockwise with $\mathbf n$ being \emph{upward}.} oriented.
 \end{thm}
@@ -102,8 +102,8 @@ Let $C'$ be a planar curve which bounds that area $D$. By Green's theorem, the l
 \begin{frame}
 \begin{rem}
 The Stokes' theorem provides the meaning of curl $\nabla\times\mathbf F$ of a vector field $\mathbf F$. Suppose that the surface $S$ is planar disk with sufficiently small radius $r$ centered at $(x_0,y_0,z_0)$. Then
-	$$\oint_C\mathbf F\cdot d\mathbf s \approx \textrm{area}S\cdot(\nabla\times\mathbf F)(x_0,y_0)\circ\mathbf n$$
-	$$(\nabla\times\mathbf F)(x_0,y_0)\circ\mathbf n \approx \frac{1}{\textrm{area}S}\oint_C\mathbf F\cdot d\mathbf s$$
+	\[\oint_C\mathbf F\cdot d\mathbf s \approx \textrm{area}S\cdot(\nabla\times\mathbf F)(x_0,y_0)\circ\mathbf n\]
+	\[(\nabla\times\mathbf F)(x_0,y_0)\circ\mathbf n \approx \frac{1}{\textrm{area}S}\oint_C\mathbf F\cdot d\mathbf s\]
 where $\mathbf n$ is the orientation of $S$.
 Therefore, the curl of a vector field $\mathbf F$ at the point $p$ on the surface $S$ has a projection onto the orthogonal direction of a surface $S$ equal to the work done by $\mathbf F$ along the neighboring boundary of the point $p$ on $S$. 
 \end{rem}
@@ -121,7 +121,7 @@ Confirm that Stokes' theorem holds for $\mathbf F=(y,-x,0)$.
 \begin{thm}[Divergence Theorem]
 Let $V$ be a region in $\mathbf R^3$ whose boundary $S=\partial V$ is a \underline{closed} surface.\footnote{A surface is called \textbf{closed} if it has \underline{no} boundary curve.}
 For a vector field $\mathbf F$ defined on $V$,
-	$$\iint_S\mathbf F\cdot d\mathbf S=\iiint_V\nabla\cdot\mathbf FdV$$
+	\[\iint_S\mathbf F\cdot d\mathbf S=\iiint_V\nabla\cdot\mathbf FdV\]
 where the orientation of $S$ is the \underline{outward} direction.
 \end{thm}
 \end{frame}
@@ -129,9 +129,9 @@ where the orientation of $S$ is the \underline{outward} direction.
 \begin{frame}
 \begin{proof}
 Note that for $\mathbf F = (P,Q,R)$,
-	$$\iint_S \mathbf F \cdot d\mathbf S = \iint_S P\mathbf i \cdot \mathbf n dS + \iint_S Q\mathbf j \cdot \mathbf n dS + \iint_S R\mathbf k \cdot \mathbf n dS$$
+	\[\iint_S \mathbf F \cdot d\mathbf S = \iint_S P\mathbf i \cdot \mathbf n dS + \iint_S Q\mathbf j \cdot \mathbf n dS + \iint_S R\mathbf k \cdot \mathbf n dS\]
 Suppose that the volume $V$ is given by
-	$$V=\{(x,y,z) \,|\, h_1(x,y)\le z \le h_2(x,y),\, (x,y)\in D\}.$$
+	\[V=\{(x,y,z) \,|\, h_1(x,y)\le z \le h_2(x,y),\, (x,y)\in D\}.\]
 where $D$ is the region in $\mathbf R^2$ on which the volume $V$ is defined.
 Then 
 	\begin{align*}
@@ -177,14 +177,14 @@ Multivariable Calculus summerizes in two sentences:
 	\item Divergence theorem is a stokes theorem.
 		\begin{itemize}
 			\item The general form of stokes theorem is
-				$$\int_V d\mu = \int_{\partial V}\mu$$
+				\[\int_V d\mu = \int_{\partial V}\mu\]
 			where $\nu$ is a differential $(k-1)$-form 
 			and $V$ is a $k$-dimensional space. 
 			The differential $d\mu$ is a $k$-form.
 			The (special) Stokes theorem is	when 
-				$$\mu = Pdx + Qdy = Rdz$$
+				\[\mu = Pdx + Qdy = Rdz\]
 			and divergence theorem is when 
-				$$\mu = Pdx\wedge dy + Qdy\wedge dz + Rdz\wedge dx.$$
+				\[\mu = Pdx\wedge dy + Qdy\wedge dz + Rdz\wedge dx.\]
 		\end{itemize}
 \end{itemize}
 \end{frame}
@@ -192,10 +192,10 @@ Multivariable Calculus summerizes in two sentences:
 \begin{frame}
 \begin{prob}
 Let 
-$$\mathbf A = \frac{(x,y,z)}{(x^2+y^2+z^2)^{3/2}}$$
+\[\mathbf A = \frac{(x,y,z)}{(x^2+y^2+z^2)^{3/2}}\]
 Let $S$ be a surface bounded by $z=4-x^2-y^2$, $z\ge0$, orieted upward.
 Find
-	$$\iint_S\mathbf A\cdot d\mathbf S$$.
+	\[\iint_S\mathbf A\cdot d\mathbf S\].
 \end{prob}
 \end{frame}
 
@@ -204,7 +204,7 @@ Find
 Let $S$ be the surface bounded by $z=e^{-x^2-y^2}$ and $z\ge1/e$.
 Let $\mathbf n$ be the orientation of $S$ satisfying $\mathbf n\cdot\mathbf k\ge0$.
 Find the flux of 
-	$$\mathbf F=(e^{x+y}-xe^{y+z}, e^{y+z}-e^{x+y},2)$$
+	\[\mathbf F=(e^{x+y}-xe^{y+z}, e^{y+z}-e^{x+y},2)\]
 on $S$ to the direction of $\mathbf n$.
 \end{prob}
 \end{frame}
@@ -214,7 +214,7 @@ on $S$ to the direction of $\mathbf n$.
 Let $C$ be the intersection of $z=1-2(x^2+y^2)$ and $z=x^2-y^2$
 oriented counter-clockwise. 
 Find $\displaystyle\oint_C\mathbf F\cdot d\mathbf s$ where
-$$\mathbf F=(y\cos(x)-yz,\sin x,e^z)$$
+\[\mathbf F=(y\cos(x)-yz,\sin x,e^z)\]
 \end{prob}
 \end{frame}
 
@@ -223,9 +223,9 @@ $$\mathbf F=(y\cos(x)-yz,\sin x,e^z)$$
 Let $S=\partial V$ be a \underline{closed} surface. Prove the following.
 	\begin{enumerate}
 		\item For any constant vector field $\mathbf C$, 
-			$$\iint_S\mathbf C\cdot d\mathbf S=0$$
+			\[\iint_S\mathbf C\cdot d\mathbf S=0\]
 		\item For any vector field $\mathbf F$,
-			$$\iint_S\nabla\times\mathbf F\cdot d\mathbf S=0$$
+			\[\iint_S\nabla\times\mathbf F\cdot d\mathbf S=0\]
 	\end{enumerate}
 \end{prob}
 \end{frame}

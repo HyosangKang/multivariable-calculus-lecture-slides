@@ -74,22 +74,168 @@ edge[every join]#1(\tikzchaincurrent)\fi}}}
 \end{frame}
 
 \begin{frame}
-\begin{thm}[Clairaut]
-If the partial derivatives $f_{xy}$, $f_{yx}$ 
-are continuous at $(x_0,y_0)$, then
-	$$f_{xy}(x_0,y_0)=f_{yx}(x_0,y_0)$$
-\end{thm}
 \begin{defn}
-Suppose that $f(x,y)$ has continuous second partial derivatives 
-at $(x_0,y_0)$. Then the polynomial 
+An \textbf{open ball} $B_{\varepsilon}(\mathbf a)$
+of the radius $\varepsilon>0$
+at a point $\mathbf a \in\mathbf R^n$
+is the set defined by
+\[B_{\varepsilon}(\mathbf a) 
+= \{\mathbf x\in\mathbf R^n \,|\,
+    \Vert\mathbf x-\mathbf a\Vert<\varepsilon\}\]
+\end{defn}
+\begin{defn}
+A function $f(x_1,\ldots,x_n) = (y_1,\ldots,y_m)$
+is said to be \textbf{continuously differentiable},
+or of \textbf{class $\mathcal C^1$}, at $\mathbf a\in\mathbf R^n$
+if there is $\varepsilon >0$ such that 
+all the partial derivatives 
+$\displaystyle\frac{\partial y_j}{\partial x_i}$
+are continuous on an open ball $B_\varepsilon(\mathbf a)$.
+\end{defn}
+\end{frame}
+
+\begin{frame}
+\begin{thm}
+If a function $z = f(x,y)$ is continuously differentiable
+at $\mathbf a = (x_0,y_0)$, then it is differentiable at $\mathbf a$.
+\end{thm}
+\begin{proofs}
+Let $B_\varepsilon(\mathbf a)$ be an open ball on
+which the partial derivatives $f_x,f_y$ are continuous.
+Let us choose a point 
+$\mathbf b = (x,y) \in B_\varepsilon(\mathbf a)$
+and define a sequence 
+\[\mathbf p_0 = \mathbf a, \quad 
+\mathbf p_1 = (x, y_0), \quad
+\mathbf p_2 = \mathbf b\]
+Without loss of generality, we will assume that 
+$x_0\le x$ and $y_0\le y$.
+Define a function $\phi_1(t) = f(t, y_0)$ on $[x_0, x]$.
+Note that $\phi_1'(t) = f_x(t,y_0)$.
+By the mean value theorem on one-variable function,
+there is $t_1\in[x_0,x]$ such that 
+\[\phi_1'(t_0)(x-x_0) = f(x,y_0) - f(x_0,y_0)\]
+\end{proofs}
+\end{frame}
+
+\begin{frame}
+\begin{proofs}
+Likewise, let us define $\phi_2(t) = f(x,t)$ on $[y_0,y]$,
+then there exists $t_2\in[y_0,y]$ satisfying
+\[\phi_2'(t_2)(y-y_0) = f(x,y) - f(x,y_0)\]
+Then,
+\begin{align*}
+&f(\mathbf b) - f(\mathbf a) 
+    - f_x(\mathbf a)(x-x_0) - f_y(\mathbf a)(y-y_0)\\
+&= (\phi_1'(t_1) - f_x(\mathbf a))(x - x_0)
+    + (\phi_2'(t_2) - f_y(\mathbf a))(y - y_0)\\
+&= (f_x(t_1,y_0) - f_x(\mathbf a))(x - x_0)
+    + (f_y(x,t_2) - f_y(\mathbf a))(y - y_0)\\
+\end{align*}
+Note that as $\mathbf b\to\mathbf a$, we have
+$t_1\to x_0$ and $t_2\to y_0$, which means 
+the above goes to $0$. 
+Since $(x-x_0)/\Vert\mathbf b-\mathbf a\Vert$ and 
+$(y-y_0)/\Vert\mathbf b-\mathbf a\Vert$ bounded,
+we proved the differentiability of $f$ at $\mathbf a$. 
+\end{proofs}
+\end{frame}
+
+\begin{frame}
+\begin{defn}
+A function $z = f(x,y)$ is said to be of 
+\textbf{class $\mathcal C^2$} at $\mathbf a\in\mathbf R^2$
+if there exists $\varepsilon>0$ such that
+all second-order partial derivatives are continuous 
+on an open ball $B_\varepsilon(\mathbf a)$.
+\end{defn}
+\begin{rem}
+Given a function $\mathbf f:\mathbf R^n\to\mathbf R^m$,
+the derivative $\mathbf{Df}$ is a function 
+$\mathbf{Df}:\mathbf R^n\to\mathbf R^{nm}$
+whose coordinate functions are all the first derivatives of
+$\mathbf f$.
+The function $\mathbf f$ being a class $\mathcal C^1$ 
+means that $\mathcal{Df}$ is continuous.
+Similarly, being a class $\mathcal C^2$ means that
+$\mathbf{Df}$ is $\mathcal C^1$, 
+which equivalent to saying that $\mathbf D^2\mathbf f$ is continuous.
+We say the function $\mathbf f$ is of class $\mathcal C^n$
+if $\mathbf D^n\mathbf f$ is continuous.
+Moreover, the function $\mathbf f$ is of class $\mathcal C^\infty$
+if $\mathbf D^n\mathbf f$ is continuous for all $n>0$.
+\end{rem}
+\end{frame}
+
+\begin{frame}
+\begin{thm}[Clairaut]
+If $z = f(x,y)$ is of class $\mathcal C^2$ at $(x_0,y_0)$, then
+\[f_{xy}(x_0,y_0)=f_{yx}(x_0,y_0).\]
+\end{thm}
+
+\begin{exmp}
+Check if the following function satisfies 
+Clairaut's theorem at $(0,0)$.
+\[f(x,y)=\begin{dcases}
+xy\frac{x^2-y^2}{x^2+y^2}&(x,y)\neq(0,0)\\
+0& (x,y)=(0,0)
+\end{dcases}\]
+\end{exmp}
+\end{frame}
+
+\begin{frame}
+\begin{proofs}[Proof of Clairaut's Theorem]
+Let us define $\mu: B_\varepsilon(\mathbf a)\to\mathbf R$ as 
+\[\mu(x,y) = f(x,y) - f(x_0,y) - f(x,y_0) + f(x_0,y_0)\]
+Let us define $\phi(t) = f(t,y) - f(t,y_0)$ on $[x_0,x]$.
+Since $f$ is of class $\mathcal C^1$, 
+$\phi$ is differentiable on $[x_0, x]$.
+Note that 
+\[\mu(x,y) = \phi(x) - \phi(x_0).\] 
+By the mean value theorem, there exists
+$t_1\in[x_0,x]$ satisfying
+\[\mu(x,y) = \phi'(t_1)(x-x_0) = (f_x(t_1,y) - f_x(t_1,y_0))(x-x_0).\]
+Since $f_x$ is of class $\mathcal C^1$, 
+we can apply the mean value theorem on 
+$\psi(h) = f_x(t_1,h)$, which means that
+there exists $t_2\in[y_0, y]$ satisfying
+\[f_x(t_1,y) - f_x(t_1,y_0) = \psi'(t_2)(y-y_0) 
+= f_{xy}(t_1,t_2)(y-y_0)\]
+\end{proofs}
+\end{frame}
+
+\begin{frame}
+\begin{proofs}
+Thus we showed that there exists 
+$(t_1,t_2)\in[x_0,x]\times[y_0,y]$ satisfying
+\[\mu(x,y) = f_{xy}(t_1,t_2)(x-x_0)(y-y_0).\]
+If we switch the role of $x$ and $y$ when we defined $\phi$,
+we would obtain the similar result:
+there exists a point $(s_1,s_2)\in[x_0,x]\times[y_0,y]$
+satisfying
+\[\mu(x,y) = f_{yx}(s_1,s_2)(x-x_0)(y-y_0).\]
+Let us replace $x= x_0+h$ and $y=y_0+h$. 
+Since we assume that $f$ is of class $\mathcal C^2$,
+the following function converges as $(x,y)\to(x_0,y_0)$.
+\[\frac{\mu(x_0+h,y_0+h)}{h^2} 
+    = f_{xy}(t_1,t_2) = f_{yx}(s_1,s_2)\]
+Since $(t_1,t_2),(s_1,s_2)\to(x_0,y_0)$ as $(x,y)\to(x_0,y_0)$,
+we are done.
+\end{proofs}
+    
+\end{frame}
+\begin{frame}
+\begin{defn}
+Suppose that $f(x,y)$ is of class $\mathcal C^2$ at $(x_0,y_0)$.
+Then the following polynomial 
+is called the \textbf{Taylor polynomial of second degree $2$}
+of $f$ at $(x_0,y_0)$.
 	\begin{align*}
 	Q(&x,y)= f(x_0,y_0)+f_x(x_0,y_0)(x-x_0)\\
 	&+f_y(x_0,y_0)(y-y_0)+\frac{1}{2}f_{xx}(x_0,y_0)(x-x_0)^2\\
 	&+f_{xy}(x_0,y_0)(x-x_0)(y-y_0)\\
-	&+\frac{1}{2}f_{yy}(x_0,y_0)(y-y_0)^2
+	&+\frac{1}{2}f_{yy}(x_0,y_0)(y-y_0)^2.
 	\end{align*}
-is called the \textbf{Taylor polynomial of second degree}
-of $f$ at $(x_0,y_0)$.
 \end{defn}
 \end{frame}
 
@@ -105,7 +251,7 @@ are continuous, then
 \end{rem}
 \begin{rem}
 Let 
-	$$\Delta\mathbf x=(\Delta x,\Delta y)=(x-x_0,y-y_0)$$ 
+	\[\Delta\mathbf x=(\Delta x,\Delta y)=(x-x_0,y-y_0)\] 
 and denote the \emph{gradient operator} $\nabla$ 
 in vector notation:
     $$\nabla=\left(\frac{\partial }{\partial x},
@@ -132,20 +278,17 @@ the $k$-th order Taylor polynomial.
     $$P_kf(\mathbf x) = \sum_{n=0}^k\frac{1}{n!}
     (\Delta \mathbf x\cdot\nabla)^nf(\mathbf x_0)$$
 This is a generalization of the Taylor polynomial 
-for single variable function: since 
-$(\Delta x\cdot \nabla)^nf(x_0) = \Delta x^n\nabla^n f(x_0)$,
-	$$P_k(x) = \sum_{n=0}^k \frac{f^{(n)}(x_0)\Delta x^n}{n!}$$
+for single variable function: 
 \end{frame}
 
 \begin{frame}
 \begin{thm}[Taylor]
-Let $f(x,y)$ is a function whose 
-third partial derivatives $f_{xxx},f_{xyx},\cdots,f_{yyy}$ 
-are all continuous on a rectangular region 
-	$$D=\{(x,y)\,|\,|x-x_0|,|y-y_0|\le\epsilon\}$$
+Let $z = f(x,y)$ be a function of class $\mathcal C^3$
+on a rectangular region
+\[D=\{(x,y)\,|\,|x-x_0|,|y-y_0|\le\epsilon\}.\]
 Then for each $(x,y)\in D$, 
 there exists a constant $0\le c\le 1$ satisfying
-	$$f(x,y)=Q(x,y)+R_2(x,y)$$
+	\[f(x,y)=Q(x,y)+R_2(x,y)\]
 where 
     $$R_2(x,y) = \frac{1}{3!}(\Delta\mathbf x\cdot\nabla)^3
     f(\mathbf x_0 + c\Delta \mathbf x)$$
@@ -154,26 +297,25 @@ where
 
 \begin{frame}
 \begin{rem}
-This theorem generalizes the Taylor theorem for 
-single-variable function:
+This theorem is a generalization of 
+Taylor theorem for one-variable function:
 \begin{quote}
-Let $f$ be a $\mathcal C^{k+1}$-function on 
+Let $f$ be of class $\mathcal C^{k+1}$ on 
 an interval $I = (x_0-\epsilon,x_0+\epsilon)$.
 Then for $x,c\in I$, there exists a constant $\xi$ 
 between $x$ and $c$ such that 
-	$$f(x) = P_k(x) + \frac{f^{(k+1)}(\xi)}{(k+1)!}(x-c)^{k+1}$$
+	\[f(x) = P_k(x) + \frac{f^{(k+1)}(\xi)}{(k+1)!}(x-c)^{k+1}\]
 \end{quote}
-Here $x=x_0+\Delta x$ and $\xi = x_0+c\Delta x$ 
-for some $0\le c\le 1$.
 Note that the choice of $c$ \emph{depends} on 
 the choice of $x,x_0$.
-We can approximate \emph{any} function by $Q_2(x,y)$
-if it has partial derivatives upto 3rd order.
-If $(x,y)$ is sufficiently close to $(x_0,y_0)$,
-the error $|R_n(x,y)|$ decreases to zero.
+Since all the third-order partial derivatives
+of $f$ are bounded, 
+the error $|R_n(x,y)|$ decreases to zero,
+as $(x,y)\to(x_0,y_0)$,
 \end{rem}
 \end{frame}
 
+%% EDITED UPTO HERE (8/12/22)
 \begin{frame}
 \begin{exmp}
 Find $Q_2(x,y)$ at $(0,0)$ for 
@@ -213,7 +355,7 @@ Let $f(x,y)$ be a function $f(x,y)$ defined on a region $D$.
 \begin{frame}
 \begin{exmp}
 Find the critical points of
-    $$f(x,y) = xy- x^2y-xy^2$$
+    \[f(x,y) = xy- x^2y-xy^2\]
 and classify them. Also, find $Q_2(x,y)$ at each critical points
 and compare their graphs.
 \end{exmp}
@@ -249,7 +391,7 @@ is called the \textbf{discriminant} of $f$.
 \begin{exmp}
 Graph the following function at $(0,0)$ and compare their 
 discriminants.
-    $$z = -x^2-y^2,\quad z = x^2+y^2,\quad z = x^2-y^2$$
+    \[z = -x^2-y^2,\quad z = x^2+y^2,\quad z = x^2-y^2\]
 \end{exmp}
 \end{frame}
 
@@ -289,7 +431,7 @@ changing the classifications of extremals.
 \begin{frame}
 \begin{exmp}[Least square method]
 	Suppose that a set of data is given by
-		$$(x_1,y_1),(x_2,y_2),\cdots,(x_n,y_n)$$
+		\[(x_1,y_1),(x_2,y_2),\cdots,(x_n,y_n)\]
 	We want to find a line $y=mx+b$ which approximates these data.
     If there are values $m_0,b_0$ such that
     the sum of squares of vertical distances between 
@@ -297,7 +439,7 @@ changing the classifications of extremals.
     among all possible lines, then 
 	we say that $y=m_0x+b_0$ best approximates the data.
 	In other words, we want to find $m,b$ such that
-		$$d(m,b) = \sum_{i=1}^n(y_i-(mx_i+b))^2$$
+		\[d(m,b) = \sum_{i=1}^n(y_i-(mx_i+b))^2\]
     is minimum.
 \end{exmp}
 \end{frame}
@@ -365,7 +507,7 @@ Let us retrict the domain of $f$ onto $L_c(g)$.
 If $(x_0,y_0)$ is an extremal point of $f$ 
 and $\nabla g(x_0,y_0)\neq\mathbf 0$,
 there exists $\lambda$ such that
-	$$\nabla f(x_0,y_0) = \lambda\nabla g(x_0,y_0)$$
+	\[\nabla f(x_0,y_0) = \lambda\nabla g(x_0,y_0)\]
 \end{thm}
 \end{frame}
 
@@ -388,7 +530,7 @@ increases the most from $(x_0,y_0)$.
 \begin{frame}
 \begin{exmp}
 Let
-	$$f(x,y)=100+\frac{100}{x^2+2y^2+9}$$
+	\[f(x,y)=100+\frac{100}{x^2+2y^2+9}\]
 be a function whose graph represent the contour of a mountain.
 Suppose that a water flow from the point $(1,0,110)$ 
 down the valley in the steepest direction.
@@ -406,7 +548,7 @@ Suppose that $(x_0,y_0,z_0)$ is a local extremal of $f(x,y,z)$
 restricted the level set $L_c(g)$. 
 If $\nabla g(x_0,y_0)\neq\mathbf 0$, 
 then there exists $\lambda$ such that
-	$$\nabla f(x_0,y_0,z_0)=\lambda\nabla g(x_0,y_0,z_0)$$
+	\[\nabla f(x_0,y_0,z_0)=\lambda\nabla g(x_0,y_0,z_0)\]
 \end{thm}
 
 \begin{exmp}
