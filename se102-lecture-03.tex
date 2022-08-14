@@ -82,23 +82,23 @@ The Chain Rule}
     If $f(x,y)$ is differentiable at 
     $(x_0,y_0)=(x(t_0),y(t_0))$,
     then the composition 
-    	$$F(t)=(f\circ c)(t) = f(x(t),y(t))$$
+    	\[F(t)=(f\circ c)(t) = f(x(t),y(t))\]
     is also differentiable at $t_0$ 
     and its differential is 
-    $$F'(t_0)=f_x(x_0,y_0)x'(t_0)+f_y(x_0,y_0)y'(t_0)$$
+    \[F'(t_0)=f_x(x_0,y_0)x'(t_0)+f_y(x_0,y_0)y'(t_0)\]
 \end{thm}
 \end{frame}
 
 \begin{frame}
 \begin{proofs}
     Let us define $g_1(t),g_2(t)$ as follows.
-	$$g_1(t) = \frac{x(t)-x_0-x'(t_0)(t-t_0)}{t-t_0}$$
-	$$g_2(t) = \frac{y(t)-y_0-y'(t_0)(t-t_0)}{t-t_0}$$
+	\[g_1(t) = \frac{x(t)-x_0-x'(t_0)(t-t_0)}{t-t_0}\]
+	\[g_2(t) = \frac{y(t)-y_0-y'(t_0)(t-t_0)}{t-t_0}\]
     Since $x(t)$, $y(t)$ are differentiable at $t_0$,
-	$$\lim_{t\to t_0}g_1(t) = \lim_{t\to t_0}g_2(t)=0.$$
+	\[\lim_{t\to t_0}g_1(t) = \lim_{t\to t_0}g_2(t)=0.\]
     Thus $g_1(t)$, $g_2(t)$ are continuous.
     Define $F(x,y)$ as
-	$$F(x,y) = \frac{f(x,y)-L(x,y)}{\sqrt{(x-x_0)^2+(y-y_0)^2}}.$$
+	\[F(x,y) = \frac{f(x,y)-L(x,y)}{\sqrt{(x-x_0)^2+(y-y_0)^2}}.\]
 \end{proofs}
 \end{frame}
 
@@ -106,11 +106,11 @@ The Chain Rule}
 \begin{proofs}
     Since we assumed that $f(x,y)$ is differentiable 
     at $(x_0,y_0)$,
-	$$\lim_{(x,y)\to(x_0,y_0)}F(x,y) = 0.$$
+	\[\lim_{(x,y)\to(x_0,y_0)}F(x,y) = 0.\]
     Thus $F(x,y)$ is continuous on $\mathbf R^2$.
     Note that
-	$$x(t)-x_0 = (x'(t_0) + g_1(t))(t-t_0),$$
-	$$y(t)-y_0 = (y'(t_0) + g_2(t))(t-t_0),$$
+	\[x(t)-x_0 = (x'(t_0) + g_1(t))(t-t_0),\]
+	\[y(t)-y_0 = (y'(t_0) + g_2(t))(t-t_0),\]
     and we can rewrite the definition of $F(x,y)$ as
     \begin{align*}
     f(x,y)-f(x_0,y_0)
@@ -155,7 +155,7 @@ This proves the theorem.
 \begin{frame}
 \begin{rem}
 We can write the chain rule using the gradient of $f(x,y)$.
-$$(f\circ c)'(t_0) = \nabla f(c(t_0))\cdot c'(t_0)$$
+\[(f\circ c)'(t_0) = \nabla f(c(t_0))\cdot c'(t_0)\]
 The formula says that
 \emph{the rate of change of $f(x,y)$ at $(x_0,y_0)$ 
 to the direction of $c'(t_0)$ 
@@ -183,7 +183,7 @@ We will see that this is a particular case of /emph{differential}.
 \begin{defn}
 Let $F:\mathbf R^2\to\mathbf R^2$ be a two-variable function
 whose coordinates are defined as follows:
-    $$F(u,v) = (x(u,v), y(u,v))$$
+    \[F(u,v) = (x(u,v), y(u,v))\]
 We say $F$ is continuous (differentiable, repectively) 
 at $(u_0, v_0)$ if all coordinate functions 
 $x, y:\mathbf R^2\to\mathbf R$ are continuous 
@@ -195,7 +195,7 @@ $x, y:\mathbf R^2\to\mathbf R$ are continuous
 \begin{thm}
 Let $\mathbf X:\mathbf R^2\to\mathbf R^2$ be a function 
 defined as 
-$$\mathbf X(u,v) = (x(u,v),y(u,v)).$$
+\[\mathbf X(u,v) = (x(u,v),y(u,v)).\]
 Let us denote $x_0=x(u_0,v_0)$, $y_0=y(u_0,v_0)$.
 If $X$ are differentiable at $(u_0,v_0)$,
 then for a function $f:\mathbf R^2\to\mathbf R$ 
@@ -329,7 +329,7 @@ we are done.
     Note that the gradient of $F$ and $f\circ X$ can be viewed as
     $1\times 2$ matrices. 
     Thus the last equation can be written as
-    $$\nabla(f\circ X) = \nabla f \cdot DX$$
+    \[\nabla(f\circ X) = \nabla f \cdot DX\]
 \end{rem}
 \end{frame}
 
@@ -337,8 +337,8 @@ we are done.
 \begin{exmp}
     Let $T(r,\theta) = (r\cos\theta,r\sin\theta)$. 
     Suppose that $F = f\circ T$. Then
-	$$F_r = f_x x_r + f_y y_r = f_x \cos\theta + f_y\sin\theta$$
-	$$F_\theta = f_x x_\theta + f_y y_\theta = -rf_x\sin\theta + r f_y\cos\theta$$
+	\[F_r = f_x x_r + f_y y_r = f_x \cos\theta + f_y\sin\theta\]
+	\[F_\theta = f_x x_\theta + f_y y_\theta = -rf_x\sin\theta + r f_y\cos\theta\]
     In matrix form,
     $$\begin{bmatrix} F_r & F_\theta \end{bmatrix}
      = \begin{bmatrix} f_x & f_y \end{bmatrix}
@@ -359,7 +359,7 @@ $$\mathbf{df}(\mathbf a) = \begin{bmatrix}
     \frac{\partial f_m}{\partial x_1}(\mathbf a) & \cdots & \frac{\partial f_m}{\partial x_n}(\mathbf a)
 \end{bmatrix}$$
 Here, each $f_i$ is the coordinate function for $f$: 
-$$f(\mathbf x) = (f_1(\mathbf x),\cdots,f_n(\mathbf x)).$$
+\[f(\mathbf x) = (f_1(\mathbf x),\cdots,f_n(\mathbf x)).\]
 \end{defn}
 \end{frame}
 
@@ -415,11 +415,11 @@ $S$ at $\mathbf a$.
 Let $f(x,y,z) = x+2y+3z$.
 Let $S$ be the graph of $z=xy$. 
 The differential $df(p)$ at $p=(1,1,1)$ on $S$ is
-	$$df(1,1,1) = \begin{bmatrix} 1 & 2 & 3 \end{bmatrix}.$$
+	\[df(1,1,1) = \begin{bmatrix} 1 & 2 & 3 \end{bmatrix}.\]
 The tangent plane of $S$ at $p$ is
-	$$x+y-z=1$$
+	\[x+y-z=1\]
 and the tangent space $T_pS$ is spanned by 
-	$$\mathbf v_1=(1,0,1),\quad\mathbf v_2=(0,1,1).$$
+	\[\mathbf v_1=(1,0,1),\quad\mathbf v_2=(0,1,1).\]
 \end{exmp}
 \end{frame}
 
@@ -435,7 +435,7 @@ Similarly, we can compute $df(p)\cdot \mathbf v_2 = 5$.
 Since given a tangent vector 
 $\mathbf v = a\mathbf v_1+b\mathbf v_2$ for suitable $a,b$,
 the rate of change of $f$ in direction of $\mathbf v$ is
-    $$df(p)\cdot\mathbf v = 4a + 5b.$$
+    \[df(p)\cdot\mathbf v = 4a + 5b.\]
 \end{frame}
 
 \begin{frame}
@@ -462,7 +462,7 @@ How fast (cm\^{}3/min) is the ice melting?
         \item Find the differential $df(1,1)$.
         \item Let $D = [1,1+\varepsilon]\times[1,1+\varepsilon]$.
         Compute the limit
-            $$\lim_{\varepsilon\to0}\frac{\textrm{area}f(D)}{\textrm{area}(D)}$$
+            \[\lim_{\varepsilon\to0}\frac{\textrm{area}f(D)}{\textrm{area}(D)}\]
         \item Find any relation between results in 1 and 2.
     \end{enumerate}
 \end{prob}

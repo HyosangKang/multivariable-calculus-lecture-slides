@@ -81,9 +81,9 @@ A differentiable one-to-one function $T:R\to D$
 is called a \textbf{transformation}.
 For $T(u_1,\cdots,u_n) = (x_1,\cdots,x_n)$, 
 the \textbf{Jacobian} of $T$ is defined as the determinant of the differential of $T$:
-	$$J_T = \det \mathbf dT.$$
+	\[J_T = \det \mathbf dT.\]
 We also denoted $J_T$ as
-	$$J_T = \frac{\partial(x_1,\cdots,x_n)}{\partial(u_1,\cdots,u_n)}$$
+	\[J_T = \frac{\partial(x_1,\cdots,x_n)}{\partial(u_1,\cdots,u_n)}\]
 \end{defn}
 \end{frame}
 
@@ -92,7 +92,7 @@ We also denoted $J_T$ as
 Let $T:R\to D$ be a transformation, 
 and $f(x,y)$ be a continuous function defined on $D$.
 Then
-	$$\iint_Df(x,y)dxdy=\iint_R(f\circ T)(u,v)|J_T|dudv.$$
+	\[\iint_Df(x,y)dxdy=\iint_R(f\circ T)(u,v)|J_T|dudv.\]
 \end{thm}
 \begin{rem}
 It is useful to remember the subsitution rule as:
@@ -107,7 +107,7 @@ Also, the Jacobian of the inverse $T^{-1}(x,y)=(u(x,y),v(x,y))$ is
 \begin{frame}
 \begin{exmp}
 Compute
-	$$\iint_D |x|e^{-x^2-y^2}dxdy$$
+	\[\iint_D |x|e^{-x^2-y^2}dxdy\]
 where $D=\{(x,y)\,|\,x^2+y^2\le1\}$.
 \end{exmp}
 \end{frame}
@@ -116,11 +116,11 @@ where $D=\{(x,y)\,|\,x^2+y^2\le1\}$.
 \begin{thm}[Integration by substitution]
 Let $V,W$ be regions in $\mathbf R^3$.
 A differentiable one-to-one function $T:W\to V$ 
-	$$T(u,v,w) = (x(u,v,w),y(u,v,w),z(u,v,w))$$
+	\[T(u,v,w) = (x(u,v,w),y(u,v,w),z(u,v,w))\]
 is called a \textbf{transformation}.
 Let $f(x,y,z)$ be a continuous function on $V$.
 Then
-	$$\iiint_Vf(x,y,z)dxdydz=\iiint_W(f\circ T)(u,v,w)|J_T|dudvdw.$$
+	\[\iiint_Vf(x,y,z)dxdydz=\iiint_W(f\circ T)(u,v,w)|J_T|dudvdw.\]
 \end{thm}
 \end{frame}
 
@@ -135,7 +135,7 @@ Compute the volume between two cylinders $x^2+y^2\le 1$, $y^2+z^2\le 1$.
 \end{exmp}
 \begin{exmp}
 Compute
-	$$\iiint_V\sqrt{x^2+y^2+z^2}e^{x^2+y^2+z^2}dxdydz$$
+	\[\iiint_V\sqrt{x^2+y^2+z^2}e^{x^2+y^2+z^2}dxdydz\]
 where $V$ is the region between the spheres $x^2+y^2+z^2=a^2$ and $x^2+y^2+z^2=b^2$ ($0<a<b$).
 \end{exmp}
 \end{frame}
@@ -175,7 +175,7 @@ The following properties hold.
 \item $\nabla\cdot(\mathbf F+\mathbf G)=\mathbf G\cdot(\nabla\times\mathbf F)-\mathbf F\cdot(\nabla\times\mathbf G)$
 \item $\nabla\cdot(\nabla f\times\nabla g)=0$
 \item Denote $\nabla^2=\nabla\cdot\nabla$. Then
-	$$\nabla\times(\nabla\times\mathbf F)=\nabla(\nabla\cdot\mathbf F)-\nabla^2\cdot\mathbf F$$
+	\[\nabla\times(\nabla\times\mathbf F)=\nabla(\nabla\cdot\mathbf F)-\nabla^2\cdot\mathbf F\]
 \end{enumerate}
 \end{thm}
 \end{frame}
@@ -185,9 +185,9 @@ The following properties hold.
 Let $\mathbf F(x,y)=(P(x,y), Q(x,y))$ be a 
 $2$-dimensional vector field.
 The \textbf{curl} of $\mathbf F$ is
-	$$\textup{curl}\mathbf F = Q_x - P_y.$$
+	\[\textup{curl}\mathbf F = Q_x - P_y.\]
 The \textbf{divergence} of $\mathbf F$ is 
-	$$\textup{div}\mathbf F = P_x + Q_y.$$
+	\[\textup{div}\mathbf F = P_x + Q_y.\]
 \end{defn}
 \end{frame}
 
@@ -202,10 +202,10 @@ the \textbf{line integral} of $\mathbf F$ is defined by
 \end{defn}	
 For $2$-dimensional vector field $\mathbf F = (P,Q)$,
 the line integral is denoted by
-	$$\int_C\mathbf F\cdot d\mathbf s = \int_C Pdx + Qdy.$$
+	\[\int_C\mathbf F\cdot d\mathbf s = \int_C Pdx + Qdy.\]
 For $3$-dimensional vector field $\mathbf F = (P,Q,R)$,
 the line integral is denoted by
-	$$\int_C\mathbf F \cdot d\mathbf s = \int_C Pdx + Qdy + Rdz.$$
+	\[\int_C\mathbf F \cdot d\mathbf s = \int_C Pdx + Qdy + Rdz.\]
 \end{frame}
 
 \begin{frame}

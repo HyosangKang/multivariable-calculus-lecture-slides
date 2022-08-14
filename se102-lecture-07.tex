@@ -80,7 +80,7 @@ Let $\varphi(x,y)$ be a function defined on a region $D\subset\mathbf R^2$.
 The vector field $\nabla\varphi$ is called the \textbf{gradient vector field} of $\varphi$.
 Conversely, let $\mathbf F:D\to\mathbf R^2$ be a vector field defined on $D$.
 A function $\varphi(x,y)$ satisfying
-	$$\nabla\varphi = (\varphi_x,\varphi_y) =\mathbf F$$
+	\[\nabla\varphi = (\varphi_x,\varphi_y) =\mathbf F\]
 is called the \textbf{potential function} of $\mathbf F$.
 \end{defn}
 \end{frame}
@@ -96,7 +96,7 @@ then it is closed.
 \end{thm}
 \begin{proof}
 Suppose that $\mathbf F = (P,Q) = \nabla \varphi$. Then
-	$$Q_x-P_y = \varphi_{yx}-\varphi_{xy} = 0.$$
+	\[Q_x-P_y = \varphi_{yx}-\varphi_{xy} = 0.\]
 \end{proof}
 \end{frame}
 
@@ -107,7 +107,7 @@ is called \textbf{conservative} if the line integral
 $\displaystyle\int_C\mathbf F\cdot d\mathbf s$
 only depends on the start and end point of the curve $C\subset D$.
 In other words, the vector field is conservative 
-if $$\oint_C\mathbf F\cdot d\mathbf s=0$$ 
+if \[\oint_C\mathbf F\cdot d\mathbf s=0\] 
 for any closed curve $C\subset D$.
 \end{defn}
 \end{frame}
@@ -120,9 +120,9 @@ then it is conservative.
 \begin{proof}
 Let $c(t) = (x(t),y(t))$, $a\le t\le b$ be a parametrization of $C$ from $p_0=c(a)$ to $p_1=c(b)$.
 Note that
-	$$\int_C \mathbf F \cdot d\mathbf s = \int_C \varphi_xdx + \varphi_ydy = \int_a^b \frac{\partial\varphi}{\partial x} \frac{\partial x}{\partial t} + \frac{\partial\varphi}{\partial y}\frac{\partial y}{\partial t} dt $$
+	\[\int_C \mathbf F \cdot d\mathbf s = \int_C \varphi_xdx + \varphi_ydy = \int_a^b \frac{\partial\varphi}{\partial x} \frac{\partial x}{\partial t} + \frac{\partial\varphi}{\partial y}\frac{\partial y}{\partial t} dt \]
 By the Chain rule, we getn
-	$$ \int_a^b \frac{\partial\varphi}{\partial x} \frac{\partial x}{\partial t} + \frac{\partial\varphi}{\partial y}\frac{\partial y}{\partial t} dt = \int_a^b \frac{d}{dt} \varphi(x(t),y(t))dt = \varphi(p_1)-\varphi(p_0).$$
+	\[ \int_a^b \frac{\partial\varphi}{\partial x} \frac{\partial x}{\partial t} + \frac{\partial\varphi}{\partial y}\frac{\partial y}{\partial t} dt = \int_a^b \frac{d}{dt} \varphi(x(t),y(t))dt = \varphi(p_1)-\varphi(p_0).\]
 \end{proof}
 \end{frame}
 
@@ -130,12 +130,12 @@ By the Chain rule, we getn
 \begin{cor}
 If a vector field $\mathbf F$ admits a potential function on $D$, 
 then
-	$$\oint_C\mathbf F\cdot d\mathbf s=0$$
+	\[\oint_C\mathbf F\cdot d\mathbf s=0\]
 for any closed curve $C$ in $D$. 
 \end{cor}
 \begin{exmp}
 Let $D=\{(x,y)\,|\,x,y>0\}$ be the first quadrant on $\mathbf R^2$. The function
-	$$\theta(x,y)=\tan^{-1}\left(\frac{y}{x}\right)$$
+	\[\theta(x,y)=\tan^{-1}\left(\frac{y}{x}\right)\]
 is a potential function of the vector field 
 $$\mathbf A = \displaystyle 
 	\left(-\frac{y}{x^2+y^2},\frac{x}{x^2+y^2}\right)$$
@@ -167,7 +167,7 @@ Let $D$ be a connected region in $\mathbf R^2$
 bounded by piecewise differentiable curve $C$.
 Let $\mathbf F(x,y)=(P(x,y), Q(x,y))$ be a vector field defined on $D$.
 Then 
-	$$\oint_C\mathbf F\cdot d\mathbf s=\iint_D Q_x-P_y dA$$
+	\[\oint_C\mathbf F\cdot d\mathbf s=\iint_D Q_x-P_y dA\]
 where the curve $C$ is \underline{positively oriented}.
 \end{thm}
 \end{frame}
@@ -175,7 +175,7 @@ where the curve $C$ is \underline{positively oriented}.
 \begin{frame}
 \begin{proof}
 Suppose that the region $D$ is given by
-	$$D = \{(x,y) \,|\, a\le x\le b, g_1(x)\le y\le g_2(x)\}$$
+	\[D = \{(x,y) \,|\, a\le x\le b, g_1(x)\le y\le g_2(x)\}\]
 Then
 	\begin{align*}
 	\oint_C Pdx 
@@ -204,11 +204,11 @@ then the potential function is unique up to constant.
 \begin{frame}
 \begin{proof}
 Let $p_0$ be a point in $D$. For $p=(x,y)$ in $D$, let us define a function $\varphi(x,y)$ as follows.
-	$$\varphi(x,y) = \int_{p_0}^p\mathbf F\cdot d\mathbf s=\int_{p_0}^pPdx+Qdy$$
+	\[\varphi(x,y) = \int_{p_0}^p\mathbf F\cdot d\mathbf s=\int_{p_0}^pPdx+Qdy\]
 The function $\varphi(x,y)$ is well-defined.
 Suppose that the path in the integral near $p$ is given by $c(t) = (x+t,y)$, $\epsilon\in(-\epsilon,0]$. 
 Then
-	$$\varphi_x = \frac{\partial}{\partial x}\int_{(x-\Delta x,y)}^{(x,y)} Pdx = P.$$
+	\[\varphi_x = \frac{\partial}{\partial x}\int_{(x-\Delta x,y)}^{(x,y)} Pdx = P.\]
 We can show $\varphi_y = Q$ in a similar way.
 \end{proof}
 \end{frame}
@@ -217,11 +217,11 @@ We can show $\varphi_y = Q$ in a similar way.
 \begin{exmp}
 Let $C$ be the semicircular arc from $(0,2)$ to $(0,-2)$ oriented counter-clockwise.
 Evaluate
-$$\int_Cxy^2dx-xydy$$
+\[\int_Cxy^2dx-xydy\]
 \end{exmp}
 \begin{exmp}
 Let $C$ be the circle $(x-2)^2+(y-3)^2=1$ oriented counter-clockwise. Evaluate
-$$\int_C\left(y-\log(x^2+y^2)\right) dx + \left(2\tan^{-1}(y/x)\right) dy$$
+\[\int_C\left(y-\log(x^2+y^2)\right) dx + \left(2\tan^{-1}(y/x)\right) dy\]
 \end{exmp}
 \end{frame}
 
@@ -268,7 +268,7 @@ $C$ is as shown below.
 \begin{frame}
 \begin{prob}
 Determine the value of
-$$\oint_C\frac{xdx+ydy}{x^2+y^2}$$
+\[\oint_C\frac{xdx+ydy}{x^2+y^2}\]
 where $C$ is a simple closed curve enclosing the origin
 oriented counter-clockwise.
 \end{prob}	

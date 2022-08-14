@@ -70,13 +70,13 @@ Vectors and Vector Spaces}
 \begin{frame}
 \begin{defn}\label{defn-vec}
 A ($n$-dimensional) \textbf{vector} is a $n$-tuple of real numbers 
-	$$\mathbf a=(a_1,a_2,\cdots,a_n)$$
+	\[\mathbf a=(a_1,a_2,\cdots,a_n)\]
 with two operations.
 	\begin{itemize}
 	\item (vector sum) For a vector $\mathbf b = (b_1,b_2,\cdots,b_n)$,
-		$$\mathbf a+\mathbf b=(a_1+b_1,a_2+b_2,\cdots,a_n+b_n).$$
+		\[\mathbf a+\mathbf b=(a_1+b_1,a_2+b_2,\cdots,a_n+b_n).\]
 	\item (scalar multiplication) For $k\in\mathbb R$, we define a vector $k\mathbf a$ as
-		$$k\mathbf a=(ka_1,ka_2,\cdots,ka_n).$$
+		\[k\mathbf a=(ka_1,ka_2,\cdots,ka_n).\]
 	\end{itemize}
 
 The ($n$-dimensional) \textbf{vector space} is the set 
@@ -88,14 +88,14 @@ of all ($n$-dimensional) vectors, and we denote it as $\mathbb R^n$.
 \begin{exmp}
 Let $O=(0,0,0)$ be the origin and $P=(a_1,a_2,a_3)$ a point in $3$-dimensional space.
 A \textbf{position vector} from $O$ to $P$ is a vector 
-	$$\overrightarrow{OP}=(a_1,a_2,a_3).$$
+	\[\overrightarrow{OP}=(a_1,a_2,a_3).\]
 The scalar multiplication of a position vector is a dilation.
 The vector sum of two position vectors is a superposition.
 
 Let $Q=(b_1,b_2,b_3)$ and $R=(a_1+b_1,a_2+b_2,a_3+b_3)$.
 the vector $\overrightarrow{PR}$ is the same as $\overrightarrow{OQ}$.
 We have the following additive operation.
-	$$\overrightarrow{OP}+\overrightarrow{OQ}=\overrightarrow{OP}+\overrightarrow{PR}=\overrightarrow{OR}$$
+	\[\overrightarrow{OP}+\overrightarrow{OQ}=\overrightarrow{OP}+\overrightarrow{PR}=\overrightarrow{OR}\]
 \end{exmp}
 \end{frame}
 
@@ -104,13 +104,13 @@ We have the following additive operation.
 A parametrization of a curve is a set of functions defined on a common interval,
 each indicates a coordinate of a point on the curve.
 Let $c:(-\varep,\varep)\rightarrow\mathbb R^2$ be a parametrization of a curve on a plane.
-	$$c(t)=(x(t),y(t))$$
+	\[c(t)=(x(t),y(t))\]
 The differntial $c'(t)=(x'(t),y'(t))$ is a vector which represents 
 the \textbf{velocity} of the parametrization at $t$. 
 The $x,y$-components of the vector $c'(t)$ represent 
 the projection of the speed of $c(t)$ in $x,y$-directions respectively.
 We can decompose the velocity vector into the sum of horizontal and vertical velocity of $c(t)$.
-	$$c'(t) = (x'(t),0)+(0,y'(t))$$
+	\[c'(t) = (x'(t),0)+(0,y'(t))\]
 \end{exmp}
 \end{frame}
 
@@ -152,14 +152,14 @@ Let us parametrize a line $l$ in $\mathbf R^3$.
 \begin{defn}
 Let $\mathbf a=(a_1,a_2,\cdots,a_n)$ be a ($n$-dimensional) vector. The \textbf{norm}
 of $\mathbf a$ is the value
-	$$\Vert \mathbf a\Vert =\sqrt{a_1^2+a_2^2+\cdots+a_n^2}.$$
+	\[\Vert \mathbf a\Vert =\sqrt{a_1^2+a_2^2+\cdots+a_n^2}.\]
 We call a vector $\mathbf a$ a unit vector if $\Vert a\Vert = 1$.
 The \textbf{zero vector} $\mathbf 0$ is the vector satisfying 
-	$$\mathbf 0+\mathbf a = \mathbf a + \mathbf 0 = \mathbf a.$$
+	\[\mathbf 0+\mathbf a = \mathbf a + \mathbf 0 = \mathbf a.\]
 for any vector $\mathbf a$.
 Note that $\Vert \mathbf a\Vert=0$ if and only if $\mathbf a=\mathbf 0$.
 The \textbf{normalization} of $\mathbf a$ is the vector
-	$$\mathbf u=\mathbf a/\Vert \mathbf a\Vert $$
+	\[\mathbf u=\mathbf a/\Vert \mathbf a\Vert \]
 \end{defn}
 \end{frame}
 
@@ -167,7 +167,7 @@ The \textbf{normalization} of $\mathbf a$ is the vector
 \begin{exmp}
 For each $i=1,\cdots, n$, 
 the (unit) \textbf{basis vector} is
-	$$\mathbf e_i=(0,\cdots,1,\cdots,0).$$
+	\[\mathbf e_i=(0,\cdots,1,\cdots,0).\]
 ($1$ is at the $i$ th place.)
 In particular, we denote $3$-dimensional basis vectors as
 	$$\mathbf i=(1,0,0),
@@ -187,7 +187,7 @@ as a \textbf{basis} of $\mathbf R^n$.
 \begin{frame}
 \begin{defn}
 The \textbf{inner product} (also called \textbf{dot product}) of two vectors $\mathbf a$, $\mathbf b$ is an operation defined by
-	$$\mathbf a\cdot\mathbf b=a_1b_1+a_2b_2+\cdots+a_nb_n$$
+	\[\mathbf a\cdot\mathbf b=a_1b_1+a_2b_2+\cdots+a_nb_n\]
 If $\mathbf a\cdot\mathbf b=0$, then we say $\mathbf a$, $\mathbf b$ are \textbf{orthogonal}.
 \end{defn}
 \begin{prop}
@@ -206,12 +206,12 @@ The inner product satisfies the following.
 \begin{thm}\label{thm-dot-cos}
 Let $\mathbf a$, $\mathbf b$ be nonzero $2$-dimensional vectors.
 If $\theta$ is the angle between $\mathbf a$ and $\mathbf b$, then 
-	$$\mathbf a\cdot\mathbf b=\Vert \mathbf a\Vert \cdot\Vert \mathbf b\Vert \cdot\cos\theta$$
+	\[\mathbf a\cdot\mathbf b=\Vert \mathbf a\Vert \cdot\Vert \mathbf b\Vert \cdot\cos\theta\]
 \end{thm}
 \begin{defn}
 For nonzero vectors $\mathbf a$ and $\mathbf b$ with the same dimension, 
 the vector defined by
-	$$\textup{proj}_{\mathbf b}\mathbf a=\left(\frac{\mathbf a\cdot\mathbf b}{\Vert \mathbf b\Vert ^2}\right)\mathbf b$$
+	\[\textup{proj}_{\mathbf b}\mathbf a=\left(\frac{\mathbf a\cdot\mathbf b}{\Vert \mathbf b\Vert ^2}\right)\mathbf b\]
 is called the \textbf{projection of $\mathbf a$ onto $\mathbf b$}.
 \end{defn}
 \end{frame}
@@ -220,8 +220,8 @@ is called the \textbf{projection of $\mathbf a$ onto $\mathbf b$}.
 \begin{rem}
 As norm measures the \emph{size} of a vector, the inner product measure the \emph{direction}.
 For example, the direction of a $2$-dimensional vector $\mathbf a$ is determined by $0\le \theta_1,\theta_2\le\pi$ satisfying
-	$$\mathbf a\cdot\mathbf e_1=\Vert \mathbf a\Vert \cos\theta_1$$
-	$$\mathbf a\cdot\mathbf e_2=\Vert \mathbf a\Vert \cos\theta_2$$
+	\[\mathbf a\cdot\mathbf e_1=\Vert \mathbf a\Vert \cos\theta_1\]
+	\[\mathbf a\cdot\mathbf e_2=\Vert \mathbf a\Vert \cos\theta_2\]
 In order to determine the direction of a $3$-dimensional vector, say $\mathbf a$, 
 we need three angles $0\le\alpha,\beta,\gamma\le\pi$ satisfying
 	\begin{equation}\label{eqn-direc-cosi}
@@ -237,9 +237,9 @@ Such quantities are called the \textbf{direction cosines}.
 Let us parametrize a plane $P$ in $\mathbf R^3$.
 \begin{enumerate}
 	\item Suppose that the plane $P$ contains a point $A  = (x_0,y_0,z_0)$ and the vector $\mathbf n$ is normal to $P$. Then for any point $X=(x,y,z)$, the vector $\overrightarrow{AX}$ is perpendicular to the vector $\mathbf n$. This property can be written as $\mathbf n\cdot\overrightarrow{AX}=0$ and more specifically, if $\mathbf n = (a,b,c)$, 
-	$$a(x-x_0)+b(y-y_0)+c(z-z_0)=0$$
+	\[a(x-x_0)+b(y-y_0)+c(z-z_0)=0\]
     \item Suppose that the plane $P$ contains two vectors $\mathbf a,\mathbf b$ which are not parallel and passes through a point $\mathbf x_0$. Then every point $X$ on the plane $P$ can be parametrized by
-    	$$X(u,v) = \mathbf a u + \mathbf b v + \mathbf x_0$$
+    	\[X(u,v) = \mathbf a u + \mathbf b v + \mathbf x_0\]
 \end{enumerate}
 \end{exmp}
 \end{frame}
@@ -291,10 +291,10 @@ The indices $i$, $j$ of an entry $a_{ij}$ represents the row and column indices 
 \begin{frame}
 \begin{defn}
 Let $A=(a_{ij})$ and $B=(b_{ij})$ be $n\times m$ matrix. Then we define
-	$$A+B=(a_{ij}+b_{ij})$$
-	$$k\cdot A=(ka_{ij})$$
+	\[A+B=(a_{ij}+b_{ij})\]
+	\[k\cdot A=(ka_{ij})\]
 Let $C$ be a $m\times l$ matrices, then $A\cdot B$ is a $n\times l$ matrix whose entries are
-	$$A\cdot B=(a_{i1}b_{1j}+a_{i2}b_{2j}+\cdots+a_{im}b_{mj})_{1\le i\le n,1\le j\le l}$$
+	\[A\cdot B=(a_{i1}b_{1j}+a_{i2}b_{2j}+\cdots+a_{im}b_{mj})_{1\le i\le n,1\le j\le l}\]
 	$$=\begingroup\renewcommand*{\arraystretch}{.5}\begin{pmatrix}
 	a_{11}  & a_{12} & \cdots & a_{1m} \\
 	\vdots  & \vdots & & \vdots \\
@@ -371,7 +371,7 @@ Let $A,B,C$ be matrices. Whenever the operations are valid, the following holds.
 \begin{frame}
     \begin{prop}
 The \textbf{transpose} of a matrix $A=(a_{ij})$ defined by
-	$$A^T=(a_{ji})$$
+	\[A^T=(a_{ji})\]
 and it satisfies the following.
 	\begin{enumerate}\setcounter{enumi}{4}
 		\item $\left(A^T\right)^T=A$
@@ -385,7 +385,7 @@ and it satisfies the following.
 \begin{frame}
 \begin{defn}
 The \textbf{determinant} of $2\times2$ matrix $A$ is defined as follows.
-	$$\det A=\left|\begin{array}{cc}a_{11}&a_{12}\\a_{21}&a_{22}\end{array}\right|=a_{11}a_{22}-a_{12}a_{21}$$
+	\[\det A=\left|\begin{array}{cc}a_{11}&a_{12}\\a_{21}&a_{22}\end{array}\right|=a_{11}a_{22}-a_{12}a_{21}\]
 The \textbf{determinant} of $3\times 3$ matrix $B$ is defined as follows.
 	\begin{align*}
 	\det B =\left|\begin{array}{ccc}b_{11}&b_{12}&b_{13}\\b_{21}&b_{22}&b_{23}\\b_{31}&b_{32}&b_{33}
@@ -400,7 +400,7 @@ The \textbf{determinant} of $3\times 3$ matrix $B$ is defined as follows.
     \begin{defn}\label{defn-cross-prod}
 Let $\mathbf a=(a_1,a_2,a_3)$, $\mathbf b=(b_1,b_2,b_3)$ be two $3$-dimensional vectors.
 The \textbf{cross-product} of $\mathbf a,\mathbf b$ is a vector defined by
-	$$\mathbf a\times\mathbf b=(a_2b_3-a_3b_2,a_3b_1-a_1b_3,a_1b_2-a_2b_1)$$
+	\[\mathbf a\times\mathbf b=(a_2b_3-a_3b_2,a_3b_1-a_1b_3,a_1b_2-a_2b_1)\]
 An easy way to remember the formula is the following.
 	$$\mathbf a\times\mathbf b=
 	\left|\begin{array}{ccc}
@@ -431,7 +431,7 @@ The following identity holds.
 \begin{frame}
 \begin{thm}
 Let $\mathbf a,\mathbf b$ be two $3$-dimensional vectors. Then
-	$$\Vert \mathbf a\times\mathbf b\Vert =\Vert \mathbf a\Vert \cdot\Vert \mathbf b\Vert \cdot|\sin\theta|$$
+	\[\Vert \mathbf a\times\mathbf b\Vert =\Vert \mathbf a\Vert \cdot\Vert \mathbf b\Vert \cdot|\sin\theta|\]
 where $\theta$ is the angle between $\mathbf a$ and $\mathbf b$.
 \end{thm}
 \end{frame}
@@ -451,7 +451,7 @@ Let us denote $|A|$ by the determinant of a matrix $A$. Then the following holds
 \begin{frame}
 \begin{defn}
 Let $A$ be a $n\times n$ matrix. A matrix $B$ satisfying
-	$$A\cdot B=B\cdot A=I_n$$
+	\[A\cdot B=B\cdot A=I_n\]
 is called the \textbf{inverse of $A$}, denoted by $B=A^{-1}$.
 If an inverse matrix $A^{-1}$ exists, then $A$ is said to be \textbf{non-singular}. 
 Otherwise, it is called \textbf{singular}.
@@ -513,7 +513,7 @@ A subset $V\subset\mathbf R^n$ is called a \textbf{vector subspace} if it is a v
 \begin{exmp}
 	For each constant $k\in\mathbf R$,
 	let $V_k$ be the set of all points on the line $y=kx$ in $\mathbf R^2$:
-		$$V_k = \{(x,y)\,|\,y=kx\}$$
+		\[V_k = \{(x,y)\,|\,y=kx\}\]
 	Then $V_k$ is a vector subspace of $\mathbf R^2$.
 	Let $V_\infty$ be the vertical line $V_\infty = \{(0,y)\,|\,y\in\mathbf R\}$.
     Then $V_\infty$ is also a vector subspace of $\mathbf R^2$
@@ -523,7 +523,7 @@ A subset $V\subset\mathbf R^n$ is called a \textbf{vector subspace} if it is a v
 \begin{frame}
     \begin{exmp}
 	Let $P$ be the set of all point on the plane 
-		$$P = \{(x,y,z)\,|\,ax+by+cz=0\}$$
+		\[P = \{(x,y,z)\,|\,ax+by+cz=0\}\]
 	in $\mathbf R^3$. By identifying points in $P$ as position vectors, we can say $P$ is a vector 
 	subspace of $\mathbf R^3$, orthogonal to $\mathbf n=(a,b,c)$ 
 	
@@ -538,7 +538,7 @@ A subset $V\subset\mathbf R^n$ is called a \textbf{vector subspace} if it is a v
     \begin{defn}
 Let $V$ a vector space and $\mathbf v_1,\cdots,\mathbf v_m\in V$.
 We say the vector space subspace 
-	$$W = \{a_1\mathbf v_1+\cdots +a_m\mathbf v_m\,|\,a_1,\cdots, a_m\in\mathbf R\}$$
+	\[W = \{a_1\mathbf v_1+\cdots +a_m\mathbf v_m\,|\,a_1,\cdots, a_m\in\mathbf R\}\]
 is \textbf{spanned} by $\mathbf v_1,\cdots,\mathbf v_m$,
 and denote by $W=\textup{span}\langle\mathbf v_1,\cdots,\mathbf v_m\rangle$.
 \end{defn}
@@ -548,10 +548,10 @@ and denote by $W=\textup{span}\langle\mathbf v_1,\cdots,\mathbf v_m\rangle$.
 \begin{defn}
 We say a vector space $V$ is \textbf{spanned by} the set of vectors $\{\mathbf v_1,\cdots,\mathbf v_n\}$,
 if every $v\in V$ can be expressed a linear combination of $v_i$'s:
-	$$v = a_1\mathbf v_1+\cdots a_n\mathbf v_n$$
+	\[v = a_1\mathbf v_1+\cdots a_n\mathbf v_n\]
 The set $\{\mathbf v_1,\cdots,\mathbf v_n\}$ is said to be \textbf{linearly independent}
 if the coefficients satisfying
-	$$a_1\mathbf v_1+\cdots a_n\mathbf v_n=\mathbf 0$$
+	\[a_1\mathbf v_1+\cdots a_n\mathbf v_n=\mathbf 0\]
 is the trivial ones, namely $a_1=\cdots=a_n=0$.
 \end{defn}
 
@@ -578,7 +578,7 @@ The \textbf{dimension} of $V$ is the number of basis vectors which spans $V$.
 \begin{enumerate}
 \item Let $\mathbf a=(1,2,1)$, $\mathbf b=(2,1,2)$, and $\mathbf u=(0,1,-1)$.
 Suppose that the vector $\mathbf u$ can be decomposed by
-	$$\mathbf u = \mathbf u_1 + \mathbf u_2 + \mathbf u_3$$
+	\[\mathbf u = \mathbf u_1 + \mathbf u_2 + \mathbf u_3\]
 where $\mathbf u_1$ is parallel to $\mathbf a$, $\mathbf u_2$ is parallel to $\mathbf b$, and
 $\mathbf u_3$ is orthogonal to both $\mathbf a$ and $\mathbf b$.
 Find the vector $\mathbf u_1$, $\mathbf u_2$, $\mathbf u_3$ explicitly.
@@ -591,10 +591,10 @@ Find the vector $\mathbf u_1$, $\mathbf u_2$, $\mathbf u_3$ explicitly.
 \begin{enumerate}
 \item Find the distance between $P=(2,1,3)$ and the line $l(t) = (2,3,-2)+t(-1,1,-2)$.
 \item Find the distance between two parallel planes
-	$$2x-2y+z=5,\quad 2x-2y+z=20$$
+	\[2x-2y+z=5,\quad 2x-2y+z=20\]
 \item Find the distance between two skew lines
-	$$l_1(t) = (0,5,-1) + t(2,1,3)$$
-	$$l_2(t) = (-1,2,0) + t(1,-1,0)$$
+	\[l_1(t) = (0,5,-1) + t(2,1,3)\]
+	\[l_2(t) = (-1,2,0) + t(1,-1,0)\]
 \end{enumerate}
 \end{prob}
 \end{frame}
