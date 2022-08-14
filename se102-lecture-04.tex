@@ -316,7 +316,6 @@ as $(x,y)\to(x_0,y_0)$,
 \end{rem}
 \end{frame}
 
-%% EDITED UPTO HERE (8/12/22)
 \begin{frame}
 \begin{exmp}
 Find $Q_2(x,y)$ at $(0,0)$ for 
@@ -329,27 +328,27 @@ and compare the graphs of $Q_2$ and $f$ near $(1,0)$
 \end{frame}
 
 \begin{frame}
-\begin{defn}\label{defn-crit-loc}
-Let $f(x,y)$ be a function $f(x,y)$ defined on a region $D$.
-\begin{itemize}
-    \item A point $(x_0,y_0)$ is said to be 
-    \textbf{local maximal} (\textbf{minimal}, respectively) 
-    at $\mathbf x_0=(x_0,y_0)$
-	if there exists a (sufficiently small) $\epsilon>0$ such that
-    for all $\mathbf x=(x,y)$ satisfying 
-    $\Vert\mathbf x-\mathbf x_0\Vert<\epsilon$, we have
-    $f(x_0,y_0)\ge f(x,y)$ ($f(x_0,y_0)\le f(x,y)$, respectively). 
-    A local maximal / minimal is often called an \textbf{extremal}.
-    \item A point $(x_0,y_0)$ is called a \textbf{critical point} 
-    if it satisfies one of the following.
-	\begin{enumerate}
-		\item $f_x(x_0,y_0)=f_y(x_0,y_0)=0$;
-		\item $f_x$ or $f_y$ does not exist at $(x_0,y_0)$;
-		\item $f$ is discontinuous at $(x_0,y_0)$.
-	\end{enumerate}
-    A critical point which is \emph{not} an extremal 
-    is called a \textbf{saddle point}.
-\end{itemize}
+\begin{defn}
+Let $z = f(x,y)$ be a function defined 
+on an open ball at $\mathbf a = (x_0,y_0)$.
+The point $\mathbf a$ is said to be 
+\textbf{local maximal} (\textbf{minimal}, respectively) 
+if there exists a sufficiently small $\varepsilon>0$ such that
+for all $\mathbf x\in B_\varepsilon(\mathbf a)$,
+\[f(\mathbf a)\ge f(\mathbf x)\quad  
+(f(\mathbf a)\le f(\mathbf x)\textrm{, respectively}).\]
+A local maximal or minimal is called an \textbf{extremal}.
+\end{defn}
+\begin{defn}
+A point $(\mathbf a)$ is called a \textbf{critical point} 
+if it satisfies one of the following conditions:
+\begin{enumerate}
+\item $f_x(\mathbf a)=f_y(\mathbf a)=0$;
+\item $f_x$ or $f_y$ does not exist at $\mathbf a$;
+\item $f$ is discontinuous at $\mathbf a$.
+\end{enumerate}
+A critical point which is \emph{not} an extremal point
+is called a \textbf{saddle point}.
 \end{defn}
 \end{frame}
 
@@ -363,30 +362,26 @@ and compare their graphs.
 \end{frame}
 
 \begin{frame}
-\begin{rem}\*
+\begin{rem}
 \begin{enumerate}
-	\item Let $f(x,y)$ is differentiable at $(x_0,y_0)$.
-    Suppose that $(x_0,y_0)$ is a critical point $f(x,y)$ 
-    of the type 1 in the definition.
-    Then the linear approximation $(x_0,y_0)$ 
-    is the plane $z=f(x_0,y_0)$.
-	\item Suppose that $(x_0,y_0)$ is a saddle point.
-    Then there exists a curve 
-    $c:(-\epsilon,\epsilon)\to\mathbf R^2$, $c(0)=(x_0,y_0)$ 
-    such that composition $F(t) = (f\circ c)(t)$ is a
-    inflection point.
+\item Suppose that $f(x,y)$ is differentiable at $\mathbf a$
+and $f_x(\mathbf a) = f_y(\mathbf a) = 0$. 
+Then the linear approximation of $f(x,y)$ at $\mathbf a$
+is the plane $z=f(\mathbf a)$ which is parallel to $xy$-plane.
+\item Suppose that $\mathbf a$ is a saddle point of $f(x,y)$.
+Then there exists a curve 
+\[c:(-\epsilon,\epsilon)\to\mathbf R^2,\quad c(0)=(\mathbf a)\] 
+such that composition $F(t) = (f\circ c)(t)$ has an
+inflection point at $t=0$.
 \end{enumerate}
 \end{rem}	
 \end{frame}
 
 \begin{frame}
 \begin{defn}
-Let $R\subset\mathbf R^2$ be a domain of $f(x,y)$ and 
-$(x_0,y_0)\in R$.
-Suppose that all second partial derivatives of $f(x,y)$ 
-are continuous on a region $R$. Then
-    $$\Delta_f = f_{xx}(x_0,y_0)f_{yy}(x_0,y_0)
-     - f_{xy}(x_0,y_0)^2$$
+Suppose that $f(x,y)$ is of class $\mathcal C^2$ 
+at $\mathbf a\in\mathbf R^2$. Then
+\[\Delta_f = f_{xx}(x_0,y_0)f_{yy}(x_0,y_0) - f_{xy}(x_0,y_0)^2\]
 is called the \textbf{discriminant} of $f$.
 \end{defn}
 \begin{exmp}
@@ -398,14 +393,15 @@ discriminants.
 
 \begin{frame}
 \begin{thm}[Hesse]
-Let $(x_0,y_0)$ be a critical point of the type 1 of $f(x,y)$.
+Let $\mathbf (x_0,y_0)$ be a critical point satisfying
+$f_x(\mathbf a)=f_y(\mathbf a)=0$.
 	\begin{itemize}
-        \item If $\Delta>0$ and $f_{xx}(x_0,y_0)>0$, 
-        then $(x_0,y_0)$ is a local minimum point.
-        \item If $\Delta>0$ and $f_{xx}(x_0,y_0)<0$, 
-        then $(x_0,y_0)$ is a local maximum point.
-		\item If $\Delta<0$, then $f(x_0,y_0)$ is a saddle point.
-        \item If $\Delta=0$, then we cannot determine 
+        \item If $\Delta_f>0$ and $f_{xx}(x_0,y_0)>0$, 
+        then $(x_0,y_0)$ is a local minimal point.
+        \item If $\Delta_f>0$ and $f_{xx}(x_0,y_0)<0$, 
+        then $(x_0,y_0)$ is a local maximal point.
+		\item If $\Delta_f<0$, then $f(x_0,y_0)$ is a saddle point.
+        \item If $\Delta_f=0$, then we cannot determine 
         local extremity by this method.
 	\end{itemize}
 \end{thm}
@@ -414,7 +410,7 @@ Let $(x_0,y_0)$ be a critical point of the type 1 of $f(x,y)$.
 \begin{frame}
 \begin{rem}
 Let $\Delta x= x-x_0,\Delta y=y-y_0$. 
-The degree-$2$ summands of $Q(x,y)$ can be written as
+The summands of the second degrees of $Q(x,y)$ can be written as
 	$$\frac{1}{2}\begin{bmatrix}\Delta x & \Delta y\end{bmatrix}
     \underbrace{\begin{bmatrix} f_{xx}(x_0,y_0) & f_{xy}(x_0,y_0)\\
 	f_{xy}(x_0,y_0) & f_{yy}(x_0,y_0) \end{bmatrix}}_{=A}
@@ -431,31 +427,30 @@ changing the classifications of extremals.
 
 \begin{frame}
 \begin{exmp}[Least square method]
-	Suppose that a set of data is given by
-		\[(x_1,y_1),(x_2,y_2),\cdots,(x_n,y_n)\]
-	We want to find a line $y=mx+b$ which approximates these data.
-    If there are values $m_0,b_0$ such that
-    the sum of squares of vertical distances between 
-    data and the line $y=m_0x+b_0$ is the minimum 
-    among all possible lines, then 
-	we say that $y=m_0x+b_0$ best approximates the data.
-	In other words, we want to find $m,b$ such that
-		\[d(m,b) = \sum_{i=1}^n(y_i-(mx_i+b))^2\]
-    is minimum.
+Suppose that a set of data is given by
+\[(x_1,y_1),(x_2,y_2),\cdots,(x_n,y_n)\]
+We want to find a linear function $f(x)=mx+b$ 
+which approximates these data.
+More precisely, we want to minimize the 
+sum of all squares of errors $f(x_i)-y_i$ to be minimum.
+we say that $y=m_0x+b_0$ best approximates the data.
+In other words, we want to find $m,b$ such that
+\[d(m,b) = \sum_{i=1}^n(y_i-(mx_i+b))^2\]
+is minimum.
 \end{exmp}
 \end{frame}
 
 \begin{frame}    
 Consider $d(m,b)$ as two-variable function on $m,b$.
 The critical point is
-    $$m_0 = \frac{\displaystyle n\sum_{i=1}^nx_iy_i 
+\[m_0 = \frac{\displaystyle n\sum_{i=1}^nx_iy_i 
         - \sum_{i=1}^n x_i\sum_{i=1}^n y_i}
         {\displaystyle n\sum_{i=1}^n x_i^2 
-        - \left(\sum_{i=1}^nx_i\right)^2}$$
-    $$b_0 = \frac{\displaystyle \sum_{i=1}^nx_i^2\sum_{i=1}^ny_i
+        - \left(\sum_{i=1}^nx_i\right)^2},\quad
+b_0 = \frac{\displaystyle \sum_{i=1}^nx_i^2\sum_{i=1}^ny_i
         - \sum_{i=1}^nx_i\sum_{i=1}^nx_iy_i}
         {\displaystyle n\sum_{i=1}^nx_i^2 
-        - \left(\sum_{i=1}^nx_i\right)^2}$$
+        - \left(\sum_{i=1}^nx_i\right)^2}\]
 	The Hessian of $d(m,b)$ at $(m_0,b_0)$ is
 	$\begin{bmatrix}
 	\displaystyle 2\sum_{i=1}^n x_i^2 & \displaystyle 2\sum_{i=1}^n x_i \\
@@ -466,10 +461,11 @@ The critical point is
 Since the discriminant of $f$ is
     $$\Delta_f(m_0,b_0) = 4n\sum_{i=1}^nx_i^2-4
     \left(\sum_{i=1}^nx_i\right)^2 > 0$$
-The point $(m_0,b_0)$ is a local minimum point.
-(in fact a global minimum point, why?)
+The point $(m_0,b_0)$ is a local minimal point.
+In fact, it is a global minimal point. (why?)
 \end{frame}
 
+%% EDITED UPTO HERE (8/15/22)
 \begin{frame}
 \begin{thm}
 Let $(x_0,y_0,z_0)$ be a critical point of $f(x,y,z)$
