@@ -577,10 +577,11 @@ Then we say $f$ is \textbf{differentiable at} $\mathbf x_0\in\mathbf R^n$ if
 
 \begin{frame}
 \begin{defn}
-	Let $f:\mathbf R^n\to\mathbf R^m$ be a function
-	whose coordinate functions are differentiable.
-	The differential of $f$ at $x_0$ is the matrix
-	$$Df(\mathbf x_0)
+Let $\mathbf f:\mathbf R^n\to\mathbf R^m$ be a function
+\[f(\mathbf x) = (f^{0}(\mathbf x), \ldots, f^{n-1}(\mathbf x))\]
+whose coordinate functions $f^i$ are differentiable.
+We call The differential of $f$ at $x_0$ is the matrix
+	\[\mathbf{Df}(\mathbf x_0)
 	 = \begin{bmatrix} 
 	\frac{\partial f_1}{x_1}(\mathbf x_0) & \cdots 
 		& \frac{\partial f_1}{x_n}(\mathbf x_0) \\
