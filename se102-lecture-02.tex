@@ -1,4 +1,4 @@
-\documentclass{beamer}
+\documentclass[t]{beamer}
 \usefonttheme{serif}
 
 \usepackage{amsmath,amsthm,amssymb,amsfonts,amscd,mathrsfs,amsxtra,multirow,kotex,mathtools,gensymb,textcomp,lipsum,tikz,verbatim,color,soul,courier,mdframed,xcolor}
@@ -559,17 +559,19 @@ then $f(x,y)$ is differentiable at $(x_0,y_0)$.
 
 \begin{frame}
 \begin{defn}
-	Let $f:\mathbf R^n\to\mathbf R$ be a function
-	whose coordinate functions $f_i$ are differentiable.
-	The \textbf{gradient} is the vector	
-		\[\nabla f = (f_{x_1},\cdots,f_{x_n})\]
-	Then $f$ is differentiable at 
-	$\mathbf x_0\in\mathbf R^n$ if 
-	$$\lim_{\mathbf x\to\mathbf x_0}
-		\frac{f(\mathbf x) - f(\mathbf x_0) 
-		- \nabla f(\mathbf x_0)
-		\cdot(\mathbf x-\mathbf x_0)}
-		{\Vert\mathbf x-\mathbf x_0\Vert} = 0$$
+Let $f:\mathbf R^n\to\mathbf R$ be a real-valued function.
+The coordinates for the point $\mathbf x\in \mathbf R^n$ is denoted by 
+\[\mathbf x = (x^{0}, \ldots, x^{n-1}).\]
+The \textbf{gradient} of $f$ at $\mathbf x$ is the vector defined by
+	\[ \nabla f = (f_{x^{0}}, \ldots, f_{x^{n-1}}) \]
+Let us consider the gradient as a $n\times 1$ matrix
+and the point $\mathbf x$ as a $1\times n$ matrix.
+Then we say $f$ is \textbf{differentiable at} $\mathbf x_0\in\mathbf R^n$ if 
+\[\lim_{\mathbf x\to\mathbf x_0}
+	\frac{f(\mathbf x) - f(\mathbf x_0) 
+	- \nabla f(\mathbf x_0)
+	\cdot(\mathbf x-\mathbf x_0)}
+	{\Vert\mathbf x-\mathbf x_0\Vert} = 0.\]
 \end{defn}
 \end{frame}
 

@@ -75,37 +75,35 @@ Multiple Integrals}
 \end{frame}
 
 \begin{frame}
-\begin{defn}[Iterated integrals]
-Let $f(x,y)$ be a two variable function define on a rectangular domain $D=[a,b]\times[c,d]$.
-The \textbf{iterated integral} $\displaystyle \int_c^d\int_a^b f(x,y) dxdy$ on $D$ is defined as follows.
-	$$\int_c^d\underbrace{\left[\int_a^b f(x,y)dx\right]}_{\textrm{consider $y$ as a constant}}dy.$$
-\end{defn}
 \begin{defn}[Double integral]
 Let $f(x,y)$ be a function defined on a rectangular region $D=[a,b]\times[c,d]$.
-Let us subdivide the intervals $[a,b]$ (respectively $[c,d]$) by $n$ ($m$, respectively) intervals.
-	\[a=x_0<x_1<\cdots<x_n=b,\quad c=y_0<y_1<\cdots<y_m=d\]
+Let us subdivide the intervals $[a,b]$ and $[c,d]$ by $n$ and $m$ subintervals:
+	\[a=x_0<x_1<\cdots<x_n=b,\quad c=y_0<y_1<\cdots<y_m=d.\]
+This subdivides $D$ into $nm$ subregions $D_{ij}=[x_{i-1},x_i]times [y_{i-1},y_i]$.
+($i=1,\cdots,n$, $j =1,\cdots,m$) 
+Denote $\Delta x_i=x_{i}-x_{i-1}$, $\quad\Delta y_j=y_{j}-y_{j-1}$.
+The \textbf{Riemann sum} of $f(x,y)$ with respect to the subdivision of $D$ is
+	\[\sum_{i=1}^n\sum_{j=1}^mf(x_i^*,y_j^*)\Delta x_i\Delta y_j\]
+if $(x_i^*,y_j^*)\in D_{ij}$.  
 \end{defn}
 \end{frame}
 
 \begin{frame}
-The region $D$ is subdivided by $nm$ rectangular regions $D_{ij}=[x_{i-1},x_i]\times [y_{i-1},y_i]$.
-For each $i=1,\cdots,n$ and $j =1,\cdots,m$, let us choose a point $(x_i^*,y_j^*)\in D_{ij}$.
-Denote $\Delta x_i=x_{i}-x_{i-1}$, $\quad\Delta y_j=y_{j}-y_{j-1}$.
-The sum 
-	\[\sum_{i=1}^n\sum_{j=1}^mf(x_i^*,y_j^*)\Delta x_i\Delta y_j\]
-is called the \textbf{Riemann sum} of $f(x,y)$ with respect to the subdivision $D_{ij}$'s.
-If the limit exists when $n,m\to\infty$, we denote 
-	\[\iint_DfdA=\lim\sum_{i=1}^n\sum_{j=1}^mf(x_i^*,y_i^*)\Delta x_i\Delta y_j\]
-This is called the \textbf{double integral} of $f$ over $D$.
+If the limit exists when $n,m\to\infty$ regardless of choice of $x_i^*$ and $y_i^*$,
+we say $f$ is \textbf{integrable} on $D$ and the limit is called the
+\textbf{double integral}. We denote the limit as 
+	\[\iint_DfdA=\lim\sum_{i=1}^n\sum_{j=1}^mf(x_i^*,y_i^*)\Delta x_i\Delta y_j.\]
+\begin{thm}
+If $f$ is continuous on the rectangular region $D=[a,b]\times[c,d]$, 
+then $f$ is integrable on $D$. 
+\end{thm}
 \end{frame}
 
 \begin{frame}
-\begin{thm}
-If $f$ is continuous on the region $D=[a,b]\times[c,d]$, then the double integral $\displaystyle\iint_DfdA$ exists.
-\end{thm}
 \begin{exmp}
-The function $\displaystyle f(x,y) = \frac{y}{1+xy}$ is continuous on $D=[0,1]\times[0,1]$.
-Find the double integral $\displaystyle \iint_Dfdxdy$.
+Coumpute
+	\[\iint_D xy dxdy\]
+for $D = [0,1]\times[0,1]$.
 \end{exmp}
 \begin{exmp}
 Show that the function $f(x,y)$ on $[0,1]\times[0,1]$ defined by
@@ -118,16 +116,39 @@ is not integrable on $[0,1]\times[0,1]$.
 \end{frame}
 
 \begin{frame}
+\begin{defn}
+Let $D\subset\mathbf R^2$ be bounded region contained in a rectangular box
+$[a,b]\times[c,d]$. We say $f$ is integrable on $D$ if
+the function $F$ below is integrable on $[a,b]\times[c,d]$.
+\[F(x,y) = \begin{dcases}
+	f(x,y) & (x,y)\in D \\
+	0 & (x,y)\in[a,b]\times[c,d]\end{dcases}\] 
+Moreover, the integral of $f$ on $D$ is defined by 
+\[ \iint_D fdxdy = \iint_{[a,b]\times[c,d]}Fdxdy.\]
+\end{defn}
+\begin{thm}
+Let $D$ be a bounded region. If a function $f(x,y)$ is continuous on $D$,
+then $f$ is integrable.
+\end{thm}
+\end{frame}
+
+\begin{frame}
+\begin{defn}[Iterated integrals]
+Let $f(x,y)$ be a two variable function define on a rectangular domain $D=[a,b]\times[c,d]$.
+The \textbf{iterated integral} $\displaystyle \int_c^d\int_a^b f(x,y) dxdy$ on $D$ is defined as follows.
+	$$\int_c^d\underbrace{\left[\int_a^b f(x,y)dx\right]}_{\textrm{consider $y$ as a constant}}dy.$$
+\end{defn}
+\begin{exmp}
+Compute $\displaystyle \int_0^1\int_0^1\frac{y}{1+xy}dxdy$.
+\end{exmp}
+\end{frame}
+
+\begin{frame}
 \begin{thm}[Fubini I]
 Let $f(x,y)$ be a continuous function defined on $D=[a,b]\times[c,d]$.
 Then
 	\[\iint_DfdA = \int_a^b \int_c^df(x,y)dy dx = \int_c^d \int_a^bf(x,y)dx dy\]
 \end{thm}
-\begin{exmp} 
-Compute
-	\[\iint\displaylimits_{[0,1]\times[0,1]}\frac{y}{1+xy}dxdy\]
-using Fubini's theorem.
-\end{exmp}
 \end{frame}
 
 \begin{frame}
@@ -155,20 +176,20 @@ Next, the iterated integral $\displaystyle\int_0^1\int_0^1f(x,y)dxdy$ is
 and it does not coincide with $\displaystyle\int_0^1\int_0^1f(x,y)dydx$.
 \end{frame}
 
-\begin{frame}
-\begin{defn}
-Let $f(x,y)$ be defined on a \underline{bounded} region $D$ in $\mathbf R^2$.
-Suppose that $D$ lies on a large rectangular domain, say $D\subset[a,b]\times[c,d]$. 
-Let us define a new function $F(x,y)$ as follows.
-    $$F(x,y)
-    = \begin{dcases}
-	f(x,y) & (x,y)\in D\\
-	0 & (x,y)\notin D
-	\end{dcases}$$
-Then the \textbf{definite integral} of $f$ over the domain $D$ is defined as 
-	\[\iint_Df(x,y)dxdy=\iint\displaylimits_{[a,b]\times[c,d]}F(x,y)dxdy\]
-\end{defn}
-\end{frame}
+% \begin{frame}
+% \begin{defn}
+% Let $f(x,y)$ be defined on a \underline{bounded} region $D$ in $\mathbf R^2$.
+% Suppose that $D$ lies on a large rectangular domain, say $D\subset[a,b]\times[c,d]$. 
+% Let us define a new function $F(x,y)$ as follows.
+%     $$F(x,y)
+%     = \begin{dcases}
+% 	f(x,y) & (x,y)\in D\\
+% 	0 & (x,y)\notin D
+% 	\end{dcases}$$
+% Then the \textbf{definite integral} of $f$ over the domain $D$ is defined as 
+% 	\[\iint_Df(x,y)dxdy=\iint\displaylimits_{[a,b]\times[c,d]}F(x,y)dxdy\]
+% \end{defn}
+% \end{frame}
 
 \begin{frame}
 \begin{thm}[Fubini II]
@@ -195,18 +216,31 @@ Find which integration works.
 \end{frame}
 
 \begin{frame}
-\begin{defn}
-Let $f(x,y,z)$ be a function defined on the boxed domain $D=[a,b]\times[c,d]\times[e,f]$.
-The \textbf{triple integral} of $f(x,y,z)$ over $D$ is denoted by
-	\[\iiint\displaylimits_{[a,b]\times[c,d]\times[e,f]}\mkern-18mu f(x,y,z)dxdydz\]
-If $f$ is defined on a region $V\subset[a,b]\times[c,d]\times[e,f]$,
-Then define
-	$$F(x,y,z) = \begin{dcases}
-	f(x,y,z) & \textrm{if }(x,y,z)\in V \\
-	0 & \textrm{otherwise} \end{dcases}$$
+\begin{defn}[Multiple integral]
+Let $f(\mathbf x)$ be a real-valued function defind 
+on a boxed region 
+	\[[x_0^0, x_1^0]\times [x_0^1,x_1^1]\times \cdots\times[x_0^{n-1}, x_1^{n-1}]\]
 Then the triple integral is defined as
 	\[\iiint_Vf(x,y,z)dxdydz =\mkern-20mu \iiint\displaylimits_{[a,b]\times[c,d]\times[e,f]}\mkern-18mu F(x,y,z)dxdydz\]
 \end{defn}
+\end{frame}
+
+\begin{frame}
+\begin{rem}
+Let $f(x,y,z)$ be a function defined on the boxed region 
+$[a,b]\times[c,d]\times[e,f]\subset\mathbf R^3$.
+The integral of $f$ over $[a,b]\times[c,d]\times[e,f]$ 
+is called the \textbf{triple integral} of $f$ and denoted by
+\[\iiint\displaylimits_{[a,b]\times[c,d]\times[e,f]}\mkern-18mu f(x,y,z)dxdydz\]
+\end{rem}
+\begin{thm}
+If $f(x,y,z)$ is defined on a bounded region $V\subset\mathbf R^3$ and
+$V$ is contained in a boxed region $[a,b]\times[c,d]\times[e,f]$,
+then $f$ is integrable if $F$ below is integrable on $[a,b]\times[c,d]\times[e,f]$.
+\[F(x,y,z) = \begin{dcases}
+	f(x,y,z) & \textrm{if }(x,y,z)\in V \\
+	0 & \textrm{otherwise.} \end{dcases}\]
+\end{thm}
 \end{frame}
 
 \begin{frame}
