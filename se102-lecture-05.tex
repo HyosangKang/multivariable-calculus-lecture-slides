@@ -124,7 +124,7 @@ the function $F$ below is integrable on $[a,b]\times[c,d]$.
 	f(x,y) & (x,y)\in D \\
 	0 & (x,y)\in[a,b]\times[c,d]\end{dcases}\] 
 Moreover, the integral of $f$ on $D$ is defined by 
-\[ \iint_D fdxdy = \iint_{[a,b]\times[c,d]}Fdxdy.\]
+\[ \iint_D fdxdy = \iint\displaylimits_{[a,b]\times[c,d]} Fdxdy.\]
 \end{defn}
 \begin{thm}
 Let $D$ be a bounded region. If a function $f(x,y)$ is continuous on $D$,
@@ -219,40 +219,59 @@ Find which integration works.
 \begin{defn}[Multiple integral]
 Let $f(\mathbf x)$ be a real-valued function defind 
 on a boxed region 
-	\[[x_0^0, x_1^0]\times [x_0^1,x_1^1]\times \cdots\times[x_0^{n-1}, x_1^{n-1}]\]
-Then the triple integral is defined as
-	\[\iiint_Vf(x,y,z)dxdydz =\mkern-20mu \iiint\displaylimits_{[a,b]\times[c,d]\times[e,f]}\mkern-18mu F(x,y,z)dxdydz\]
+	\[V = [a_0^0, a_1^0]\times [a_0^1,a_1^1]\times \cdots\times[a_0^{n-1}, a_1^{n-1}].\]
+We say $f$ is \textbf{integrable} if the limit
+	\[\lim_{N\to\infty}\sum_{j_0,\ldots,j_{n-1}=1}^{N} f(\mathbf x_j^*)
+	\Delta x^0\Delta x^{n-1}\]
+exists for arbitrary choice of $\mathbf x_j^* \in 
+\displaystyle\prod_{i=0}^{n-1}[x_{j-1}^{i}, x_{j}^{i}]$
+where $x_j^i = (a_1^i - a_0^i)/N$.
+The limit is called the \textbf{multiple integral} of $f$ on $V$.
 \end{defn}
 \end{frame}
 
 \begin{frame}
-\begin{rem}
-Let $f(x,y,z)$ be a function defined on the boxed region 
-$[a,b]\times[c,d]\times[e,f]\subset\mathbf R^3$.
-The integral of $f$ over $[a,b]\times[c,d]\times[e,f]$ 
-is called the \textbf{triple integral} of $f$ and denoted by
-\[\iiint\displaylimits_{[a,b]\times[c,d]\times[e,f]}\mkern-18mu f(x,y,z)dxdydz\]
-\end{rem}
-\begin{thm}
-If $f(x,y,z)$ is defined on a bounded region $V\subset\mathbf R^3$ and
-$V$ is contained in a boxed region $[a,b]\times[c,d]\times[e,f]$,
-then $f$ is integrable if $F$ below is integrable on $[a,b]\times[c,d]\times[e,f]$.
-\[F(x,y,z) = \begin{dcases}
-	f(x,y,z) & \textrm{if }(x,y,z)\in V \\
-	0 & \textrm{otherwise.} \end{dcases}\]
-\end{thm}
+The multiple integral of $f$ on $3$-dimensional boxed region $V$ is 
+called the \emph{triple integral}:
+	\[\iiint_Vf(x,y,z)dxdydz =\mkern-20mu 
+	\iiint\displaylimits_{[a,b]\times[c,d]\times[e,f]}\mkern-18mu F(x,y,z)dxdydz\]
+\begin{defn}
+Let $f(x,y,z)$ be a function defined on a bounded region $V\subset\mathbf R^3$
+which is contained in a boxed region $[a,b]\times[c,d]\times[e,f]$.
+We say $f$ is integrable if the function $F(x,y,z)$ defined on 
+$[a,b]\times[c,d]\times[e,f]$ as below is integrable:
+	\[F(x,y,z) = \begin{dcases}
+		f(x,y,z) & (x,y,z) \in V \\
+		0 & \textrm{otherwise.}
+	\end{dcases}\]
+\end{defn}
+% \begin{rem}
+% Let $f(x,y,z)$ be a function defined on the boxed region 
+% $[a,b]\times[c,d]\times[e,f]\subset\mathbf R^3$.
+% The integral of $f$ over $[a,b]\times[c,d]\times[e,f]$ 
+% is called the \textbf{triple integral} of $f$ and denoted by
+% \[\iiint\displaylimits_{[a,b]\times[c,d]\times[e,f]}\mkern-18mu f(x,y,z)dxdydz\]
+% \end{rem}
 \end{frame}
 
 \begin{frame}
+\begin{thm}
+Let $f(x,y,z)$ be a continuous function defined on 
+a bounded region $V\subset\mathbf R^3$.
+Then $f$ is integrable.
+\end{thm}
 \begin{thm}[Fubini III]
 Let $f(x,y,z)$ be a continuous function defined on the region $V$.
 	\[V=\{(x,y,z)\,|\,a\le x\le b,\,g_1(x)\le y\le g_2(x),\, h_1(x,y)\le z\le h_2(x,y)\}\]
 Then the following holds.
 	\[\iiint_Vf(x,y,z)dxdydz = \int_a^b \int_{g_1(x)}^{g_2(x)} \int_{h_1(x,y)}^{h_2(x,y)}f(x,y,z)dz dy dx\]
 \end{thm}
+\end{frame}
+
+\begin{frame}
 \begin{figure}[h]
 \begin{center}
-\includegraphics[scale=.2]{image/lnsec9-2}
+\includegraphics[scale=.4]{image/lnsec9-2}
 \end{center}
 \end{figure}
 \end{frame}
@@ -265,76 +284,6 @@ Compute
 \end{exmp}
 \end{frame}
 
-\begin{frame}
-\begin{defn}
-Given an interval $I\subset\mathbf R$, a curve $C$ parametrized by $c:I\rightarrow\mathbf R^n$
-	\[c(t)=(x_1(t),x_2(t),\cdots,x_n(t))\]
-is \textbf{piecewise differentiable} if all coordinate function $x_i(t)$ are $\mathcal C^n$
-on the interval $I$ except for finitely many points.
-\end{defn}
-\begin{defn}
-Let $C$ be a piecewise differentiable curve on $\mathbf R^2$ parametrized by $c:[a,b]\to\mathbf R^2$.
-Let $c'(t)=(x'(t),y'(t))$ be the velocity vector at the point $c(t)$.
-Let $f(x,y)$ be a function defined on the curve $C$.
-Then the \textbf{line integral} of $f(x,y)$ along $C$ is defined as
-	\[\int_Cfds=\int_a^bf(c(t))|c'(t)|dt.\]
-\end{defn}
-\end{frame}
-
-\begin{frame}
-\begin{prop}
-The line integral $\displaystyle \int_C f ds$ does not depend on the parametrization of $C$.
-\end{prop}
-\begin{proof}
-Let $c:[a,b]\to\mathbf R^2$ be a parametrization of $C$.
-Let $h:[c,d]\to[a,b]$ be a one-to-one correspondence which gives a \emph{re-parametrization} $c\circ h$ of $C$.
-Let us write $t = h(\tau)$. Then
-    \begin{align*}
-        \int_c^df(c\circ h(\tau)) \cdot |(c\circ h)'(\tau)|d\tau 
-        &= \int_c^d f(c(t)) \cdot |c'(t)| \cdot |h'(\tau)|d\tau \\
-        &= \int_a^b f(c(t)) \cdot |c'(t)| dt
-    \end{align*}
-\end{proof}
-\end{frame}
-
-\begin{frame}
-\begin{exmp}
-Let us compute the line integral \[\displaystyle\int_C (2+x^2y)ds\]
-where $C$ is the unit circle centered at the origin with counter clockwise orientation.
-\end{exmp}
-\end{frame}
-
-\begin{frame}
-\begin{defn}
-Let $D$ be a region in $\mathbf R^2$ and $S$ a suface in $\mathbf R^3$.
-A map $X:D\rightarrow S$
-	\[X(u,v)=(x(u,v),y(u,v),z(u,v))\]
-is called the \textbf{parametrization} of $S$ if
-it is one-to-one correspondence and
-every partial derivative of $x,y,z$ 
-is continuous on $D$.
-\end{defn}
-\begin{exmp}
-Find a parametrization of $x^2+y^2-z^2=1$.	
-\end{exmp}
-\end{frame}
-
-\begin{frame}
-\begin{defn}
-Let $f(x,y,z)$ be a function defined on a surface $S$.
-Let $X:D\rightarrow S$ be a parametrization of $S$.
-The \textbf{surface integral} of $f$ on $S$ is defined by
-	\begin{equation}\label{eqn-surf-int}
-	\iint_SfdS=\iint_D(f\circ X)(u,v)\Vert X_u\times X_v\Vert dudv
-	\end{equation}
-\end{defn}
-
-\begin{exmp}
-Let $S$ be the surface defined by the graph of $z=\sqrt{x^2+y^2}$ over the disk $x^2+y^2\le 1$.
-Evaluate 
-	\[\iint_S zdS\]
-\end{exmp}
-\end{frame}
 
 \begin{frame}
 \begin{prob}
@@ -346,8 +295,8 @@ For $f(x,y) = x^2-y^2$, compute $\displaystyle \iint_S x+z dS$.
 \begin{prob}
 Let $f(x,y)$ is a density at the point $(x,y)$ on domain $D$.
 Let
-	$$\bar x= \frac{\iint_D xf(x,y)dA}{\iint_Df(x,y)dA},\quad 
-	\bar y = \frac{\iint_D yf(x,y)dA}{\iint_Df(x,y)dA}$$
+	\[\bar x= \frac{\displaystyle\iint_D xf(x,y)dA}{\displaystyle\iint_Df(x,y)dA},\quad 
+	\bar y = \frac{\displaystyle\iint_D yf(x,y)dA}{\displaystyle\iint_Df(x,y)dA}.\]
 Explain why $(\bar x,\bar y)$ is the center of mass of $D$.
 \end{prob}
 \end{frame}
@@ -355,18 +304,8 @@ Explain why $(\bar x,\bar y)$ is the center of mass of $D$.
 \begin{frame}
 \begin{prob}
 Let $V=\{0\le x\le 2,0\le y\le x,0\le z\le y\}$.
-Write $\iiint_V f(x,y,z)$ in six different iterated integrals.
+Write $displaystyle\iiint_V f(x,y,z)$ in six different iterated integrals.
 \end{prob}
 \end{frame}
 
-\begin{frame}
-\begin{prob}
-Let $f(x,y)$ be a function defined on a curve $C$.
-Explain the meaning of the line integral $\int_Cfds$ in the following senses:
-\begin{enumerate}
-	\item when $f(x,y)$ is a density at $(x,y)$ on the curve $C$;
-	\item the section of the graph $z=f(x,y)$ over the curve C.
-\end{enumerate}
-\end{prob}
-\end{frame}
 \end{document}

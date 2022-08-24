@@ -364,14 +364,15 @@ and compare their graphs.
 \begin{frame}
 \begin{rem}
 \begin{enumerate}
-\item Suppose that $f(x,y)$ is differentiable at $\mathbf a$
-and $f_x(\mathbf a) = f_y(\mathbf a) = 0$. 
-Then the linear approximation of $f(x,y)$ at $\mathbf a$
-is the plane $z=f(\mathbf a)$ which is parallel to $xy$-plane.
+\item Suppose that $f(x,y)$ is differentiable at $\mathbf a$.
+The linear approximation $Q_1$ of $f(x,y)$ at $\mathbf a$ is the 
+\emph{tangent plane}.
+If $f_x(\mathbf a) = f_y(\mathbf a) = 0$
+then the tangent plane is parallel to the $xy$-plane.
 \item Suppose that $\mathbf a$ is a saddle point of $f(x,y)$.
 Then there exists a curve 
 \[c:(-\epsilon,\epsilon)\to\mathbf R^2,\quad c(0)=(\mathbf a)\] 
-such that composition $F(t) = (f\circ c)(t)$ has an
+such that composite function $F(t) = (f\circ c)(t)$ has an
 inflection point at $t=0$.
 \end{enumerate}
 \end{rem}	
@@ -410,15 +411,15 @@ $f_x(\mathbf a)=f_y(\mathbf a)=0$.
 \begin{frame}
 \begin{rem}
 Let $\Delta x= x-x_0,\Delta y=y-y_0$. 
-The summands of the second degrees of $Q(x,y)$ can be written as
-	$$\frac{1}{2}\begin{bmatrix}\Delta x & \Delta y\end{bmatrix}
+The summands of the second degrees of $Q_2(x,y)$ can be written as
+    \[\frac{1}{2}\begin{bmatrix}\Delta x & \Delta y\end{bmatrix}
     \underbrace{\begin{bmatrix} f_{xx}(x_0,y_0) & f_{xy}(x_0,y_0)\\
 	f_{xy}(x_0,y_0) & f_{yy}(x_0,y_0) \end{bmatrix}}_{=A}
-	\begin{bmatrix}\Delta x \\ \Delta y\end{bmatrix}$$
+	\begin{bmatrix}\Delta x \\ \Delta y\end{bmatrix}\]
 Note that $\Delta_f=\det A$.
-Using linear transformation of $x,y$, we can coorrespond
-the matrix $A$ to one of three matrices below, wihout
-changing the classifications of extremals.
+Using linear transformation of $x,y$, we can transform 
+the matrix $A$ to one of three matrices below wihout
+changing the nature of extremities.
 	$$\begin{bmatrix}-1&0\\0&-1\end{bmatrix},\quad
 	\begin{bmatrix}1&0\\0&1\end{bmatrix},\quad
 	\begin{bmatrix}\pm1&0\\0&\mp1\end{bmatrix}$$
@@ -427,16 +428,18 @@ changing the classifications of extremals.
 
 \begin{frame}
 \begin{exmp}[Least square method]
-Suppose that a set of data is given by
-\[(x_1,y_1),(x_2,y_2),\cdots,(x_n,y_n)\]
-We want to find a linear function $f(x)=mx+b$ 
-which approximates these data.
-More precisely, we want to minimize the 
-sum of all squares of errors $f(x_i)-y_i$ to be minimum.
-we say that $y=m_0x+b_0$ best approximates the data.
-In other words, we want to find $m,b$ such that
-\[d(m,b) = \sum_{i=1}^n(y_i-(mx_i+b))^2\]
-is minimum.
+Suppose that we have a set of data
+    \[(x_1,y_1),(x_2,y_2),\ldots,(x_n,y_n)\]
+where each $y_i$ is an experimental output for each input $x_i$.
+Assume that hypothetically the output value $y_j$ should follow a
+linear equation on the input value, say $mx+b$.
+Our goal is to find the value of $m$ and $b$ that 
+best \emph{fits} to the data: we want to minimize the 
+sum of all squares of errors between the actual value $y_i$
+and true value $mx_i+b$ to be minimum.
+In other words, we want 
+    \[d(m,b) = \sum_{i=1}^n(y_i-(mx_i+b))^2\]
+to be minimum.
 \end{exmp}
 \end{frame}
 
@@ -477,6 +480,7 @@ Let $H$ be the $3\times 3$ matrix defined by
 Let $d_1, d_2, d_3$ be the determinants of the 
 $1\times1$, $2\times2$, $3\times3$ sub-matrices on the 
 left-top corner of $H$. 
+Suppose that $d_1d_2d_3\neq0$.
     \begin{itemize}
        \item If $d_i > 0$ for all $i$, then $(x_0,y_0,z_0)$
        is a local minimum point. 
@@ -518,9 +522,9 @@ where the function $f(x,y)=3x+y$ attains maximal or minimal.
 \end{exmp}
 
 \begin{cor}
-The gradient vector $\nabla f(x_0,y_0)$ has the 
-direction where the value of function $f(x,y)$ 
-increases the most from $(x_0,y_0)$. 
+The direction of the gradient vector $\nabla f(x_0,y_0)$
+is the direction the value of function $f(x,y)$ 
+increases the fastest from the point $(x_0,y_0)$. 
 \end{cor}
 \end{frame}
 

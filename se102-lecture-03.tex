@@ -354,12 +354,12 @@ Then the \textbf{differential} at $\mathbf a\in\mathbf R^n$
 is the $m\times n$ matrix $\mathbf{df}(\mathbf a)$
 defined as below:
 $$\mathbf{df}(\mathbf a) = \begin{bmatrix}
-    \frac{\partial f_1}{\partial x_1}(\mathbf a) & \cdots & \frac{\partial f_1}{\partial x_n}(\mathbf a) \\
+    \frac{\partial f^1}{\partial x^1}(\mathbf a) & \cdots & \frac{\partial f^1}{\partial x^n}(\mathbf a) \\
     \vdots & \ddots & \vdots \\
-    \frac{\partial f_m}{\partial x_1}(\mathbf a) & \cdots & \frac{\partial f_m}{\partial x_n}(\mathbf a)
+    \frac{\partial f^m}{\partial x^1}(\mathbf a) & \cdots & \frac{\partial f^m}{\partial x^n}(\mathbf a)
 \end{bmatrix}$$
-Here, each $f_i$ is the coordinate function for $f$: 
-\[f(\mathbf x) = (f_1(\mathbf x),\cdots,f_n(\mathbf x)).\]
+Here, each $f^i$ is the coordinate function for $f$: 
+\[f(\mathbf x) = (f^1(\mathbf x),\cdots,f^n(\mathbf x)).\]
 \end{defn}
 \end{frame}
 
@@ -398,15 +398,19 @@ $S$ at $\mathbf a$.
     $\mathbf v = (v_1,\cdots, v_n)$ in $T_{\mathbf a}\mathbf R^n$,
     the vector $\mathbf{df}(\mathbf a)\mathbf v$ 
     is a $m$-dimensional vector defined by
-    $$d\mathbf f(\mathbf a)\mathbf v 
+    \[d\mathbf f(\mathbf a)\mathbf v 
     = \begin{bmatrix}
-    \frac{\partial f_1}{\partial x_1}(\mathbf a) 
-        & \cdots &\frac{\partial f_1}{\partial x_n}(\mathbf a) \\
+    \frac{\partial f^1}{\partial x^1}(\mathbf a) 
+        & \cdots &\frac{\partial f^1}{\partial x^n}(\mathbf a) \\
 	\vdots & \ddots & \vdots \\
-    \frac{\partial f_m}{\partial x_1}(\mathbf a) 
-        & \cdots &\frac{\partial f_m}{\partial x_n}(\mathbf a) 
+    \frac{\partial f^m}{\partial x^1}(\mathbf a) 
+        & \cdots &\frac{\partial f^m}{\partial x^n}(\mathbf a) 
     \end{bmatrix}
-    \begin{bmatrix} v_1 \\ \vdots \\ v_n \end{bmatrix}$$
+    \begin{bmatrix} v_1 \\ \vdots \\ v_n \end{bmatrix}.\]
+    From the chain rule, if $\mathbf v = \mathbf c'(0)$ for some
+    curve $\mathbf c$ in $\mathbf R^n$, then the vector
+    $\textbf{df}(\mathbf a)\mathbf v$ is the
+    tangent vector $(\mathbf f\circ\mathbf c)'(0)$.
 \end{rem}
 \end{frame}
 
