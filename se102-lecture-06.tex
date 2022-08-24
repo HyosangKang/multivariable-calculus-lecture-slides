@@ -270,12 +270,13 @@ The following properties hold.
 
 \begin{frame}
 \begin{defn}
-Let $C$ be a curve in $\mathbf R^n$ parametrized by $c:[a,b]\to\mathbf R^n$.
+Let $C$ be a curve in $\mathbf R^n$ parametrized by 
+$\mathbf c:[a,b]\to\mathbf R^n$.
 The \textbf{line integral} of $\mathbf F$ on $C$, 
 denoted by $\displaystyle\int_C\mathbf F\cdot d\mathbf s$, is defined by
 	\[\int_C\mathbf F\cdot d\mathbf s 
-	= \int_a^b\mathbf F((c(t)))\cdot c'(t)dt.\]
-When $c(a)=c(b)$, the curve is said to be \textbf{closed}.
+	= \int_a^b\mathbf F\circ \mathbf c(t)))\cdot \mathbf c'(t)dt.\]
+When $\mathbf c(a)=\mathbf c(b)$, the curve is said to be \textbf{closed}.
 The line integral on a closed curve is denoted by
 	\[\oint_C\mathbf F\cdot d\mathbf s.\]
 \end{defn}	
@@ -348,12 +349,6 @@ Show that the following properties hold.
 	\item $\nabla\times(\nabla\times\mathbf F)=\nabla(\nabla\cdot\mathbf F)-\nabla\cdot \nabla\cdot\mathbf F$
 	\item $\nabla\times(\mathbf F\times\mathbf G) = (\nabla\cdot\mathbf G)\mathbf F - (\nabla\cdot \mathbf F)\mathbf G + (\mathbf G\cdot\nabla)\cdot \mathbf F - (\mathbf F\cdot\nabla)\cdot \mathbf G$
 \end{enumerate}
-\end{prob}
-\end{frame}
-
-\begin{frame}
-\begin{prob}
-Explain geometric meanings of $\nabla\cdot\mathbf F$ and $\nabla\times\mathbf F$.
 \end{prob}
 \end{frame}
 

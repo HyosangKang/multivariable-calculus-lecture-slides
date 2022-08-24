@@ -75,9 +75,14 @@ Stokes Theorem}
 \end{frame}
 
 \begin{frame}
+From now on, we will assume that every function
+is differentiable and is of class $\mathcal C^\infty$.
+(We call such functions as \emph{smooth} functions.)
 \begin{defn}
-Let $\varphi(x,y)$ be a function defined on a region $D\subset\mathbf R^2$.
-The vector field $\nabla\varphi$ is called the \textbf{gradient vector field} of $\varphi$.
+Let $\varphi(x,y)$ be a function defined on a region 
+$D\subset\mathbf R^2$.
+The vector field $\nabla\varphi$ is called the 
+\textbf{gradient vector field} of $\varphi$.
 Conversely, let $\mathbf F:D\to\mathbf R^2$ be a vector field defined on $D$.
 A function $\varphi(x,y)$ satisfying
 	\[\nabla\varphi = (\varphi_x,\varphi_y) =\mathbf F\]
@@ -103,11 +108,12 @@ Suppose that $\mathbf F = (P,Q) = \nabla \varphi$. Then
 \begin{frame}
 \begin{defn}
 A vector field $\mathbf F$ defined on $D\subset\mathbf R^2$
-is called \textbf{conservative} if the line integral 
+is called \textbf{conservative} if the value of line integral 
 $\displaystyle\int_C\mathbf F\cdot d\mathbf s$
-only depends on the start and end point of the curve $C\subset D$.
-In other words, the vector field is conservative 
-if \[\oint_C\mathbf F\cdot d\mathbf s=0\] 
+only depends on the start and end point of 
+a parametrization of the curve $C\subset D$.
+Equivalently, a vector field is conservative if 
+	\[\oint_C\mathbf F\cdot d\mathbf s=0\] 
 for any closed curve $C\subset D$.
 \end{defn}
 \end{frame}
@@ -118,57 +124,66 @@ If a vector field $\mathbf F$ admits a potential function,
 then it is conservative.
 \end{thm}
 \begin{proof}
-Let $c(t) = (x(t),y(t))$, $a\le t\le b$ be a parametrization of $C$ from $p_0=c(a)$ to $p_1=c(b)$.
+Let $c(t) = (x(t),y(t))$, $a\le t\le b$, be a parametrization of $C$ from $p_0=c(a)$ to $p_1=c(b)$.
 Note that
 	\[\int_C \mathbf F \cdot d\mathbf s = \int_C \varphi_xdx + \varphi_ydy = \int_a^b \frac{\partial\varphi}{\partial x} \frac{\partial x}{\partial t} + \frac{\partial\varphi}{\partial y}\frac{\partial y}{\partial t} dt \]
-By the Chain rule, we getn
+By the Chain rule, we get
 	\[ \int_a^b \frac{\partial\varphi}{\partial x} \frac{\partial x}{\partial t} + \frac{\partial\varphi}{\partial y}\frac{\partial y}{\partial t} dt = \int_a^b \frac{d}{dt} \varphi(x(t),y(t))dt = \varphi(p_1)-\varphi(p_0).\]
 \end{proof}
 \end{frame}
 
 \begin{frame}
-\begin{cor}
-If a vector field $\mathbf F$ admits a potential function on $D$, 
-then
-	\[\oint_C\mathbf F\cdot d\mathbf s=0\]
-for any closed curve $C$ in $D$. 
-\end{cor}
+% \begin{cor}
+% If a vector field $\mathbf F$ admits a potential function on $D$, 
+% then it is conservative.
+% 	\[\oint_C\mathbf F\cdot d\mathbf s=0\]
+% for any closed curve $C$ in $D$. 
+% \end{cor}
 \begin{exmp}
 Let $D=\{(x,y)\,|\,x,y>0\}$ be the first quadrant on $\mathbf R^2$. The function
 	\[\theta(x,y)=\tan^{-1}\left(\frac{y}{x}\right)\]
 is a potential function of the vector field 
 $$\mathbf A = \displaystyle 
 	\left(-\frac{y}{x^2+y^2},\frac{x}{x^2+y^2}\right)$$
-on $D$.
+on $D$. Does $\mathbf A$ admits a potential function on 
+$\mathbf R^2-\{(0,0)\}$?
 \end{exmp}
 \end{frame}
 
-\begin{frame}
-\begin{exmp}
-Not every closed vector field admits a potential function.
-Consider the vector field 
-$$\mathbf A = \displaystyle 
-	\left(-\frac{y}{x^2+y^2},\frac{x}{x^2+y^2}\right)$$
-defined on $D = \mathbf R^2\setminus\{(0,0)\}$.
-is closed, but it does not admit any potential function on $D$.
-(Think carefully why this does not contradict to the previous example.)
-To show this, suppose that $\mathbf a$ has a potential function 
-on $\mathbf R^2\setminus\{(0,0)\}$.
-Then $\displaystyle \oint_C\mathbf a\cdot d\mathbf s$ must be $0$ 
-for any closed curve $C$.
-However we can show that the line integral of this vector field 
-over a circle around the origin is not zero.
-\end{exmp}
-\end{frame}
+% \begin{frame}
+% \begin{exmp}
+% Not every closed vector field admits a potential function.
+% Consider the vector field 
+% $$\mathbf A = \displaystyle 
+% 	\left(-\frac{y}{x^2+y^2},\frac{x}{x^2+y^2}\right)$$
+% defined on $D = \mathbf R^2\setminus\{(0,0)\}$.
+% is closed, but it does not admit any potential function on $D$.
+% (Think carefully why this does not contradict to the previous example.)
+% To show this, suppose that $\mathbf a$ has a potential function 
+% on $\mathbf R^2\setminus\{(0,0)\}$.
+% Then $\displaystyle \oint_C\mathbf a\cdot d\mathbf s$ must be $0$ 
+% for any closed curve $C$.
+% However we can show that the line integral of this vector field 
+% over a circle around the origin is not zero.
+% \end{exmp}
+% \end{frame}
 
 \begin{frame}
+\begin{defn}
+A curve $C\subset \mathbf R^2$ is said to be \textbf{simple}
+if it has no self-intersection.
+We say a simple closed curve $C\subset\mathbf R^2$ is 
+\textbf{positively oriented} if it is parametrized by
+$c(t)$ where the region by $C$ always lies on the \emph{left} side 
+of the tangent vector $c'(t)$.
+\end{defn}
 \begin{thm}[Green]
 Let $D$ be a connected region in $\mathbf R^2$
-bounded by piecewise differentiable curve $C$.
+bounded by piecewise differentiable simple closed curve $C$.
 Let $\mathbf F(x,y)=(P(x,y), Q(x,y))$ be a vector field defined on $D$.
 Then 
 	\[\oint_C\mathbf F\cdot d\mathbf s=\iint_D Q_x-P_y dA\]
-where the curve $C$ is \underline{positively oriented}.
+where the curve $C$ is positively oriented.
 \end{thm}
 \end{frame}
 
@@ -182,22 +197,29 @@ Then
 	&= \int_a^b P(x,g_1(x))dx + \int_b^a P(x,g_2(x))dx \\
 	&= \int_a^b P(x,g_1(x))-P(x,g_2(x)) dx = - \iint_D P_y dA
 	\end{align*}
-Similarly, $\displaystyle \int_CQdy = \iint_D Q_x dA$.
+Similarly, we can show that $\displaystyle \int_CQdy = \iint_D Q_x dA$.
 \end{proof}
 \end{frame}
 
 
 \begin{frame}
+\begin{defn}
+A region $D\subset\mathbf R^2$ is said to be \textbf{connected}
+if every pair of points in $D$ can be connected by a path in $D$.
+The set $D$ is said to be \textbf{simply connected}
+if every \emph{loop} can be continuously \emph{shrink} to a point.
+\end{defn}
 \begin{cor}
-Let $D$ be a \underline{simply connected} region in $\mathbf R^2$.
-A vector field $\mathbf F$ defined on $D$ is conservative if it is closed.
+A vector field $\mathbf F$ defined on 
+a simply connected region is conservative if it is a closed vector field.
 \end{cor}
 \begin{thm}[Poincare lemma]
-Let $D$ be a \underline{simply connected} region in $\mathbf R^2$ 
-and $\mathbf F$ a vector field defined on $D$.
-If $\mathbf F$ is closed, then $\mathbf F$ admits a potential function.
+Let $\mathbf F$ a vector field defined on a simply connected
+region $D\subset\mathbf R^2$.
+If $\mathbf F$ is closed, 
+then $\mathbf F$ admits a potential function.
 Furthermore, if $D$ is connected, 
-then the potential function is unique up to constant.
+then the potential function is unique up to constant multiple.
 \end{thm}
 \end{frame}
 
@@ -227,8 +249,9 @@ Let $C$ be the circle $(x-2)^2+(y-3)^2=1$ oriented counter-clockwise. Evaluate
 
 \begin{frame}
 \begin{exmp}
-Let $(a_1,b_1)$, $(a_2,b_2)$, $\cdots$, $(a_n,b_n)$ be the successive vertices
-of $n$-polygon. Show that the area inside the polygon is
+Let $(a_1,b_1)$, $(a_2,b_2)$, $\cdots$, $(a_n,b_n)$ be the 
+successive vertices of a \emph{convex} $n$-polygon. 
+Show that the area inside the polygon is
 	$$\frac{1}{2}\left(\left|\begin{matrix}a_1 & b_1\\a_2 &b_2\end{matrix}\right|+
 	\left|\begin{matrix}a_2 & b_2\\a_3 &b_3\end{matrix}\right|+ \cdots +
 	\left|\begin{matrix}a_{n-1} & b_{n-1}\\a_n &b_n\end{matrix}\right| +
@@ -237,57 +260,28 @@ of $n$-polygon. Show that the area inside the polygon is
 \end{frame}
 
 \begin{frame}
-\begin{prob}
-Let $\mathbf F = \langle 3y,-4x\rangle$.
-Find $\displaystyle\oint_{\partial D} \mathbf F\cdot d\mathbf s$
-oriented counter-clockwise for the following region $D$.
-	\begin{enumerate}
-		\item $\displaystyle D= \{(x,y)\,|\,x^2+y^2\le 4\}$
-		\item $\displaystyle D = \{(x,y,)\,|\,x^2+2y^2\le 4\}$
-	\end{enumerate}
-\end{prob}
-\end{frame}
-
-\begin{frame}
-\begin{prob}
-Evaluate $\displaystyle\oint_C 5ydx-3xdy$ where $C$ is the cardioid $r=1-\sin\theta$
-oriented counter-clockwise.
-\end{prob}
-\end{frame}
-
-\begin{frame}
-\begin{prob}
-Evaluate $\displaystyle\oint_C (x^4y^5-2y)dx + (3x+x^5y^4)dy$ where
-$C$ is as shown below.
-\begin{center}
-	\includegraphics[scale=.5]{image/lnsec11-1}
-\end{center}
-\end{prob}
-\end{frame}
-
-\begin{frame}
-\begin{prob}
-Determine the value of
-\[\oint_C\frac{xdx+ydy}{x^2+y^2}\]
-where $C$ is a simple closed curve enclosing the origin
-oriented counter-clockwise.
-\end{prob}	
-\end{frame}
-
-\begin{frame}
+\begin{defn}
+Suppose that a simple closed curve $C$ in $\mathbf R^3$
+bounds a orientable surface $S$ with a fixed orientation $\mathbf n$.
+We say $C$ is \textbf{positively oriented} with respect to $S$
+if it is parametrized by $\mathbf c(t)$ 
+where the surface $S$ is on the \emph{left} side of 
+the tangent vector $\mathbf c'(t)$
+when the \emph{upward} direction is $\mathbf n$.
+\end{defn}
 \begin{thm}[Stokes]
 Let $S$ be an oriented surface with a piecewise continuous boundary $C$.
 For $\mathbf F$ be a continuous vector field defined on $S$. Then
 	\[\oint_C\mathbf F\cdot d\mathbf s=\iint_S\nabla\times\mathbf F\cdot d\mathbf S\]
-where $C$ and $S$ are \underline{positively}\footnote{The boundary is \textbf{postively} oriented
-if the direction is counter-clockwise with $\mathbf n$ being \emph{upward}.} oriented.
+where $C$ is positively orientated with respect to $S$.
 \end{thm}
 \end{frame}
 
 \begin{frame}
 \begin{proof}
-Let $\mathbf F = \langle P,Q,R\rangle$. 
-Suppose that the surface $S$ is given by the graph of a function $z=f(x,y)$ on a bounded domain $D\subset\mathbf R^2$.
+Let $\mathbf F = (P,Q,R)$ be a $3$-dimensional vector field.
+Suppose that the surface $S$ is given by the graph of $z=f(x,y)$
+over a region $D\subset\mathbf R^2$.
 Let $X(x,y) = (x,y,f(x,y))$ be the parametrization of $S$. Then
 	\begin{align*}
 	\iint_S \nabla\times \mathbf Fd\mathbf S 
@@ -302,11 +296,11 @@ Let $C'$ be a planar curve which bounds that area $D$. By Green's theorem, the l
 
 \begin{frame}
 \begin{rem}
-The Stokes' theorem provides the meaning of curl $\nabla\times\mathbf F$ of a vector field $\mathbf F$. Suppose that the surface $S$ is planar disk with sufficiently small radius $r$ centered at $(x_0,y_0,z_0)$. Then
+Stokes' theorem provides the meaning of curl $\nabla\times\mathbf F$ of a vector field $\mathbf F$. Suppose that the surface $S$ is planar disk with sufficiently small radius $r$ centered at $(x_0,y_0,z_0)$. Then
 	\[\oint_C\mathbf F\cdot d\mathbf s \approx \textrm{area}S\cdot(\nabla\times\mathbf F)(x_0,y_0)\circ\mathbf n\]
+When $\mathbf n$ is the orientation of $S$, we can say
 	\[(\nabla\times\mathbf F)(x_0,y_0)\circ\mathbf n \approx \frac{1}{\textrm{area}S}\oint_C\mathbf F\cdot d\mathbf s\]
-where $\mathbf n$ is the orientation of $S$.
-Therefore, the curl of a vector field $\mathbf F$ at the point $p$ on the surface $S$ has a projection onto the orthogonal direction of a surface $S$ equal to the work done by $\mathbf F$ along the neighboring boundary of the point $p$ on $S$. 
+% Therefore, the curl of a vector field $\mathbf F$ at the point $p$ on the surface $S$ has a projection onto the orthogonal direction of a surface $S$ equal to the work done by $\mathbf F$ along the neighboring boundary of the point $p$ on $S$. 
 \end{rem}
 \end{frame}
 
@@ -319,21 +313,25 @@ Confirm that Stokes' theorem holds for $\mathbf F=(y,-x,0)$.
 \end{frame}
 
 \begin{frame}
+\begin{defn}
+A surface $S$ in $\mathbf R^3$ is said to be \textbf{closed}
+it it has no boundary.
+\end{defn}
 \begin{thm}[Divergence Theorem]
-Let $V$ be a region in $\mathbf R^3$ whose boundary $S=\partial V$ is a \underline{closed} surface.\footnote{A surface is called \textbf{closed} if it has \underline{no} boundary curve.}
+Let $V$ be a region in $\mathbf R^3$ whose boundary 
+$S=\partial V$ is a closed orientable surface.
 For a vector field $\mathbf F$ defined on $V$,
 	\[\iint_S\mathbf F\cdot d\mathbf S=\iiint_V\nabla\cdot\mathbf FdV\]
-where the orientation of $S$ is the \underline{outward} direction.
+where the orientation of $S$ is set to be the outward direction.
 \end{thm}
 \end{frame}
 
 \begin{frame}
 \begin{proof}
-Note that for $\mathbf F = (P,Q,R)$,
+For $\mathbf F = (P,Q,R)$, we have
 	\[\iint_S \mathbf F \cdot d\mathbf S = \iint_S P\mathbf i \cdot \mathbf n dS + \iint_S Q\mathbf j \cdot \mathbf n dS + \iint_S R\mathbf k \cdot \mathbf n dS\]
 Suppose that the volume $V$ is given by
 	\[V=\{(x,y,z) \,|\, h_1(x,y)\le z \le h_2(x,y),\, (x,y)\in D\}.\]
-where $D$ is the region in $\mathbf R^2$ on which the volume $V$ is defined.
 Then 
 	\begin{align*}
 	\iint_S R\mathbf k \cdot \mathbf n dS 
@@ -366,28 +364,42 @@ Use divergence theorem to compute the flux $\displaystyle\iint_S\mathbf F\cdot d
 (How should we choose the volume $V$?)
 \end{exmp}
 \end{frame}
+\begin{frame}
+\begin{prob}
+Let $\mathbf F = \langle 3y,-4x\rangle$.
+Find $\displaystyle\oint_{\partial D} \mathbf F\cdot d\mathbf s$
+oriented counter-clockwise for the following region.
+	\begin{enumerate}
+		\item $\displaystyle D= \{(x,y)\,|\,x^2+y^2\le 4\}$
+		\item $\displaystyle D = \{(x,y)\,|\,x^2+2y^2\le 4\}$
+	\end{enumerate}
+\end{prob}
+\end{frame}
 
 \begin{frame}
-Multivariable Calculus summerizes in two sentences:
-\begin{itemize}
-	\item Derivative is a linear transformation.
-		\begin{itemize}
-			\item Derivative $Df(\mathbf a)$ of a multivariable function
-			is a linear map between tangent spaces at $\mathbf a$ and $f(\mathbf a)$.
-		\end{itemize}
-	\item Divergence theorem is a stokes theorem.
-		\begin{itemize}
-			\item The general form of stokes theorem is
-				\[\int_V d\mu = \int_{\partial V}\mu\]
-			where $\nu$ is a differential $(k-1)$-form 
-			and $V$ is a $k$-dimensional space. 
-			The differential $d\mu$ is a $k$-form.
-			The (special) Stokes theorem is	when 
-				\[\mu = Pdx + Qdy = Rdz\]
-			and divergence theorem is when 
-				\[\mu = Pdx\wedge dy + Qdy\wedge dz + Rdz\wedge dx.\]
-		\end{itemize}
-\end{itemize}
+\begin{prob}
+Evaluate $\displaystyle\oint_C 5ydx-3xdy$ where $C$ is the cardioid $r=1-\sin\theta$
+oriented counter-clockwise.
+\end{prob}
+\end{frame}
+
+\begin{frame}
+\begin{prob}
+Evaluate $\displaystyle\oint_C (x^4y^5-2y)dx + (3x+x^5y^4)dy$ where
+$C$ is as shown below.
+\begin{center}
+	\includegraphics[scale=.5]{image/lnsec11-1}
+\end{center}
+\end{prob}
+\end{frame}
+
+\begin{frame}
+\begin{prob}
+Determine the value of
+\[\oint_C\frac{xdx+ydy}{x^2+y^2}\]
+where $C$ is a simple closed curve enclosing the origin
+oriented counter-clockwise.
+\end{prob}	
 \end{frame}
 
 \begin{frame}
@@ -421,7 +433,8 @@ Find $\displaystyle\oint_C\mathbf F\cdot d\mathbf s$ where
 
 \begin{frame}
 \begin{prob}
-Let $S=\partial V$ be a \underline{closed} surface. Prove the following.
+Let $S=\partial V$ be a closed surface. 
+Prove the following statements.
 	\begin{enumerate}
 		\item For any constant vector field $\mathbf C$, 
 			\[\iint_S\mathbf C\cdot d\mathbf S=0\]
@@ -430,4 +443,13 @@ Let $S=\partial V$ be a \underline{closed} surface. Prove the following.
 	\end{enumerate}
 \end{prob}
 \end{frame}
+
+\begin{frame}
+\begin{prob}
+Explain geometric meanings of curl ($\nabla\times\mathbf F$) 
+and divergence ($\nabla\cdot\mathbf F$) for $2$ or
+$3$-dimensional vector fields.
+\end{prob}
+\end{frame}
+
 \end{document}

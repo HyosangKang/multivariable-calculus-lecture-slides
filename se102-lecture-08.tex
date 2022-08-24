@@ -66,7 +66,7 @@ edge[every join]#1(\tikzchaincurrent)\fi}}}
 \institute[]{\inst{1}Division of Mathematics\\ School of Interdisciplinary Studies\\ DGIST}
 
 \date[]{Lecture 08\\
-More on Integration}
+Manifolds}
 
 \begin{document}
 
@@ -240,4 +240,28 @@ Thus the volume of $S_3(1)$ is
 	\end{enumerate}
 \end{prob}
 \end{frame}
+
+\begin{frame}
+Multivariable Calculus summerizes in two sentences:
+\begin{itemize}
+	\item Derivative is a linear transformation.
+		\begin{itemize}
+			\item Derivative $Df(\mathbf a)$ of a multivariable function
+			is a linear map between tangent spaces at $\mathbf a$ and $f(\mathbf a)$.
+		\end{itemize}
+	\item Divergence theorem is a stokes theorem.
+		\begin{itemize}
+			\item The general form of stokes theorem is
+				\[\int_V d\mu = \int_{\partial V}\mu\]
+			where $\nu$ is a differential $(k-1)$-form 
+			and $V$ is a $k$-dimensional space. 
+			The differential $d\mu$ is a $k$-form.
+			The (special) Stokes theorem is	when 
+				\[\mu = Pdx + Qdy = Rdz\]
+			and divergence theorem is when 
+				\[\mu = Pdx\wedge dy + Qdy\wedge dz + Rdz\wedge dx.\]
+		\end{itemize}
+\end{itemize}
+\end{frame}
+
 \end{document}
